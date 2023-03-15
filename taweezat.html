@@ -109,8 +109,18 @@
                               <li>
                                 <a href="online-courses.html">Online Courses</a>
                               </li>
-                              <li><a href="#">Abjad Calculator</a></li>
-                              <li><a href="#">Ilm u Aadad Istikhara</a></li>
+                              <li>
+                                <a
+                                  href="https://al-syed-islamic-institute.netlify.app/main"
+                                  >Abjad Calculator</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  href="https://al-syed-islamic-institute.netlify.app/"
+                                  >Ilm u Aadad Istikhara</a
+                                >
+                              </li>
                             </ul>
                           </li>
                           <li><a href="contact.html">Contact</a></li>
@@ -383,7 +393,36 @@
       <!-- Footer End-->
     </footer>
     <!-- JS here -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      function formSubmit() {
+        const form = document.querySelector("#contactForm");
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
 
+          // Collect form data using FormData API
+          const formData = new FormData(form);
+
+          // Create an object with the form data
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+          console.log(data);
+          // Make an axios.post request with the form data
+          // axios
+          //   .post("localhost:5000/taweezat", data)
+          //   .then((response) => {
+          //     console.log(response.data);
+          //     // do something with the response data
+          //   })
+          //   .catch((error) => {
+          //     console.error(error);
+          //     // handle error
+          //   });
+        });
+      }
+    </script>
     <!-- All JS Custom Plugins Link Here here -->
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
