@@ -94,7 +94,7 @@
                         src="./assets/img/logo/Khanqah Qadria DP.png"
                         alt="logo"
                         srcset=""
-                        width="50"
+                        width="75"
                       />
                     </a>
                   </div>
@@ -118,7 +118,9 @@
                               <li><a href="kaat.html">Kaat</a></li>
                               <li><a href="taweezat.html">Taweezat</a></li>
                               <li>
-                                <a href="online-courses.html">Online Courses</a>
+                                <a href="amliyat_courses.html"
+                                  >Amliyat Courses</a
+                                >
                               </li>
                               <li>
                                 <a
@@ -159,7 +161,7 @@
             <div class="row">
               <div class="col-xl-12">
                 <div class="hero-cap hero-cap2 text-center">
-                  <h2>Online Courses</h2>
+                  <h2>Amliyat Courses</h2>
                 </div>
               </div>
             </div>
@@ -172,7 +174,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12">
-              <h2 class="contact-title">Online Courses</h2>
+              <h2 class="contact-title">Amliyat Courses</h2>
             </div>
             <div class="col-lg-8">
               <form
@@ -230,8 +232,8 @@
                         id="number"
                         type="number"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Phone Number'"
-                        placeholder="Enter your Phone Number"
+                        onblur="this.placeholder = 'Enter your WhatsApp Number with Country Code'"
+                        placeholder="Enter your WhatsApp Number with Country Code"
                       />
                     </div>
                   </div>
@@ -490,7 +492,7 @@
         };
         console.log(formData);
         axios
-          .post("http://localhost:5000/online-courses", formData)
+          .post("http://localhost:5000/amliyat_courses", formData)
           .then((response) => {
             console.log(response.data);
             // do something with the response data

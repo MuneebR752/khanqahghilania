@@ -94,7 +94,7 @@
                         src="./assets/img/logo/Khanqah Qadria DP.png"
                         alt="logo"
                         srcset=""
-                        width="50"
+                        width="75"
                       />
                     </a>
                   </div>
@@ -118,7 +118,9 @@
                               <li><a href="kaat.html">Kaat</a></li>
                               <li><a href="taweezat.html">Taweezat</a></li>
                               <li>
-                                <a href="online-courses.html">Online Courses</a>
+                                <a href="amliyat_courses.html"
+                                  >Amliyat Courses</a
+                                >
                               </li>
                               <li>
                                 <a
@@ -184,6 +186,7 @@
                   <div class="col-sm-6">
                     <div class="form-group">
                       <input
+                        required
                         class="form-control valid"
                         name="name"
                         id="name"
@@ -211,6 +214,19 @@
                     <div class="form-group">
                       <input
                         class="form-control valid"
+                        name="fathername"
+                        id="fathername"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter your Father name'"
+                        placeholder="Enter your Father name"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
                         name="email"
                         id="email"
                         type="email"
@@ -224,12 +240,25 @@
                     <div class="form-group">
                       <input
                         class="form-control valid"
+                        name="age"
+                        id="age"
+                        type="number"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter your Age'"
+                        placeholder="Enter your Age"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
                         name="number"
                         id="number"
                         type="number"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Phone Number'"
-                        placeholder="Enter your Phone Number"
+                        onblur="this.placeholder = 'Enter your WhatsApp Number with Country Code'"
+                        placeholder="Enter your WhatsApp Number with Country Code"
                       />
                     </div>
                   </div>
@@ -300,8 +329,8 @@
                 </div>
                 <div class="form-group mt-3">
                   <button
-                    onclick="formSubmission()"
                     type="submit"
+                    onclick="formSubmission()"
                     class="button button-contactForm boxed-btn"
                   >
                     Send
