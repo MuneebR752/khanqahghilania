@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="assets/css/themify-icons.css" />
     <link rel="stylesheet" href="assets/css/slick.css" />
     <link rel="stylesheet" href="assets/css/nice-select.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style copy.css" />
   </head>
 
   <body class="body-bg">
@@ -167,10 +167,68 @@
         </div>
       </div>
       <!-- Hero End -->
-
-      <div class="bg-primary p-5 m-4 container text-light">
-        Ilm ul Adaad Istikhara
+      <div class="container my-5">
+        <div
+          class="row flex-column align-content-center justify-content-center"
+        >
+          <div class="row form-group">
+            <p class="col-2 h5 text-center" id="name-total">: کل</p>
+            <input
+              onchange="abjadCalc(event)"
+              name="name"
+              id="name"
+              type="text"
+              class="input col-7 form-control"
+            />
+            <label for="name" class="col-3 h5">: نام</label>
+          </div>
+          <div class="row form-group">
+            <p class="col-2 h5 text-center" id="mother-name-total">: کل</p>
+            <input
+              onchange="abjadCalc(event)"
+              name="motherName"
+              id="motherName"
+              type="text"
+              class="input col-7 form-control"
+            />
+            <label for="motherName" class="col-3 h5">: والدہ کا نام</label>
+          </div>
+          <div class="row form-group">
+            <p class="h5 col-2 text-center" id="day-total">: کل</p>
+            <select
+              class="form-control form-select col-7"
+              id="day"
+              name="day"
+              onchange="setDay()"
+            >
+              <option value="0">Select One</option>
+              <option value="367">367 :پیر/دو‌شنبه</option>
+              <option value="422">422 :منگل/سه‌شنبه</option>
+              <option value="566">566 :بدھ/چهار‌شنبه</option>
+              <option value="412">412 :جمعرات/پنج‌شنبه</option>
+              <option value="118">118 :جمعہ/جمعه</option>
+              <option value="257">257 :ہفتہ /شنبه</option>
+              <option value="387">387 :اتوار/یک‌شنبه</option>
+            </select>
+            <label for="day" class="h5 col-3">: دن کے اعداد</label>
+          </div>
+          <div class="col-12 text-center my-5">
+            <p class="h4">مجموعی اعداد <u id="total"></u></p>
+          </div>
+          <div class="row justify-content-center">
+            <button class="btn btn-dark col-2 mx-5" onclick="calculate()">
+              استخارہ کے لیے
+            </button>
+            <button class="btn btn-dark col-2 mx-5" onclick="sumOfDigits()">
+              لکی نمبر نکالنے کے لیے
+            </button>
+          </div>
+          <div>
+            <p id="result"></p>
+          </div>
+        </div>
       </div>
+
       <!--? About Area Start -->
     </main>
     <footer>
@@ -254,12 +312,133 @@
     <!-- Scroll Up -->
 
     <!-- JS here -->
+    <script>
+      let abjadValue = {
+        name: 0,
+        motherName: 0,
+        day: 0,
+      };
+      let tAbjadValue = NaN;
+      let result = "";
+
+      const abjad = {
+        ا: 1,
+        آ: 1,
+        أ: 1,
+        إ: 1,
+        ٱ: 1,
+        ء: 1,
+        ب: 2,
+        پ: 2,
+        ج: 3,
+        چ: 3,
+        د: 4,
+        ه: 5,
+        ة: 5,
+        ۀ: 5,
+        و: 6,
+        ؤ: 6,
+        ز: 7,
+        ژ: 7,
+        ح: 8,
+        ط: 9,
+        ي: 10,
+        ی: 10,
+        ى: 10,
+        ئ: 10,
+        ك: 20,
+        گ: 20,
+        ک: 20,
+        ل: 30,
+        م: 40,
+        ن: 50,
+        س: 60,
+        ع: 70,
+        ف: 80,
+        ص: 90,
+        ق: 100,
+        ر: 200,
+        ش: 300,
+        ت: 400,
+        ث: 500,
+        خ: 600,
+        ذ: 700,
+        ض: 800,
+        ظ: 900,
+        غ: 1000,
+        ں: 50,
+        ٹ: 400,
+        ڑ: 200,
+        ہ: 5,
+        ے: 10,
+        ھ: 5,
+        ڈ: 4,
+      };
+
+      let calculate = () => {
+        let total = abjadValue.name + abjadValue.motherName + abjadValue.day;
+        let result = total % 4;
+        switch (result) {
+          case 0:
+            document.getElementById("result").textContent = "سحر جادہ :  0";
+            break;
+          case 1:
+            document.getElementById("result").textContent = "اندرونی بخار : 1";
+            break;
+          case 2:
+            document.getElementById("result").textContent = "بیرونی بخار : 2";
+            break;
+          case 3:
+            document.getElementById("result").textContent = "سحر جادہ : 3";
+            break;
+        }
+      };
+      let abjadCalc = (e) => {
+        let abjadString = e.target.value;
+        let value = 0;
+        for (let i = 0; i < abjadString.length; i++) {
+          if (
+            abjad[abjadString[i]] == undefined ||
+            abjad[abjadString[i]] == null
+          ) {
+            continue;
+          }
+          value += abjad[abjadString[i]];
+        }
+        abjadValue[e.target.name] = value;
+        setTAbjadValue(total);
+        setDay();
+      };
+      let setDay = () => {
+        abjadValue.day = parseInt(document.querySelector("select").value);
+        setTAbjadValue(total);
+      };
+      let sumOfDigits = () => {
+        let sum = 0;
+        let num = abjadValue.name;
+        while (num) {
+          sum += num % 10;
+          num = Math.floor(num / 10);
+        }
+        document.getElementById("result").textContent = sum;
+      };
+      let total = () => {
+        let sum = abjadValue.name + abjadValue.motherName + abjadValue.day;
+        document.getElementById("total").textContent = sum;
+        document.getElementById("name-total").textContent =
+          " " + abjadValue.name + " : کل";
+        document.getElementById("mother-name-total").textContent =
+          " " + abjadValue.motherName + " : کل";
+        document.getElementById("day-total").textContent =
+          " " + abjadValue.day + " : کل";
+      };
+    </script>
     <!-- All JS Custom Plugins Link Here here -->
     <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
     <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="./assets/js/popper.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <!-- <script src="./assets/js/bootstrap.min.js"></script> -->
     <!-- Jquery Mobile Menu -->
     <script src="./assets/js/jquery.slicknav.min.js"></script>
 
@@ -272,19 +451,19 @@
     <script src="./assets/js/jquery.magnific-popup.js"></script>
 
     <!-- Nice-select, sticky -->
-    <script src="./assets/js/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/jquery.sticky.js"></script>
+    <!-- <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <script src="./assets/js/jquery.sticky.js"></script> -->
 
     <!-- counter , waypoint -->
     <!-- <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
     <script src="./assets/js/jquery.counterup.min.js"></script> -->
 
     <!-- contact js -->
-    <script src="./assets/js/contact.js"></script>
+    <!-- <script src="./assets/js/contact.js"></script>
     <script src="./assets/js/jquery.form.js"></script>
     <script src="./assets/js/jquery.validate.min.js"></script>
     <script src="./assets/js/mail-script.js"></script>
-    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="./assets/js/jquery.ajaxchimp.min.js"></script> -->
 
     <!-- Jquery Plugins, main Jquery -->
     <script src="./assets/js/plugins.js"></script>
