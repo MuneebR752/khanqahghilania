@@ -172,31 +172,31 @@
           class="row flex-column align-content-center justify-content-center"
         >
           <div class="row form-group">
-            <p class="col-2 h5 text-center" id="name-total">: کل</p>
+            <p class="col-3 h5 text-right" id="nameTotal">: کل</p>
             <input
-              onchange="abjadCalc(event)"
+              onchange="(abjadCalc(event))"
               name="name"
               id="name"
               type="text"
-              class="input col-7 form-control"
+              class="input col-6 form-control"
             />
             <label for="name" class="col-3 h5">: نام</label>
           </div>
           <div class="row form-group">
-            <p class="col-2 h5 text-center" id="mother-name-total">: کل</p>
+            <p class="col-3 h5 text-right" id="motherNameTotal">: کل</p>
             <input
               onchange="abjadCalc(event)"
               name="motherName"
               id="motherName"
               type="text"
-              class="input col-7 form-control"
+              class="input col-6 form-control"
             />
             <label for="motherName" class="col-3 h5">: والدہ کا نام</label>
           </div>
           <div class="row form-group">
-            <p class="h5 col-2 text-center" id="day-total">: کل</p>
+            <p class="h5 col-3 text-right" id="select">: کل</p>
             <select
-              class="form-control form-select col-7"
+              class="form-control form-select col-6"
               id="day"
               name="day"
               onchange="setDay()"
@@ -212,10 +212,10 @@
             </select>
             <label for="day" class="h5 col-3">: دن کے اعداد</label>
           </div>
-          <div class="col-12 text-center my-5">
+          <div class="col-12 text-center mt-4">
             <p class="h4">مجموعی اعداد <u id="total"></u></p>
           </div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-center mt-4">
             <button class="btn btn-dark col-2 mx-5" onclick="calculate()">
               استخارہ کے لیے
             </button>
@@ -223,8 +223,9 @@
               لکی نمبر نکالنے کے لیے
             </button>
           </div>
-          <div>
-            <p id="result"></p>
+          <div class="row text-center justify-content-center mt-4">
+            <p class="col-2 mx-5 h5" id="calculate"></p>
+            <p class="col-2 mx-5 h5" id="sumOfDigits"></p>
           </div>
         </div>
       </div>
@@ -380,16 +381,18 @@
         let result = total % 4;
         switch (result) {
           case 0:
-            document.getElementById("result").textContent = "سحر جادہ :  0";
+            document.getElementById("calculate").textContent = "سحر جادہ :  0";
             break;
           case 1:
-            document.getElementById("result").textContent = "اندرونی بخار : 1";
+            document.getElementById("calculate").textContent =
+              "اندرونی بخار : 1";
             break;
           case 2:
-            document.getElementById("result").textContent = "بیرونی بخار : 2";
+            document.getElementById("calculate").textContent =
+              "بیرونی بخار : 2";
             break;
           case 3:
-            document.getElementById("result").textContent = "سحر جادہ : 3";
+            document.getElementById("calculate").textContent = "سحر جادہ : 3";
             break;
         }
       };
@@ -406,12 +409,13 @@
           value += abjad[abjadString[i]];
         }
         abjadValue[e.target.name] = value;
-        setTAbjadValue(total);
-        setDay();
+        document.getElementById(e.target.name + "Total").innerHTML =
+          value == 0 ? ` : کل` : ` ${value} : کل`;
       };
       let setDay = () => {
         abjadValue.day = parseInt(document.querySelector("select").value);
-        setTAbjadValue(total);
+        document.getElementById("select").innerHTML =
+          abjadValue.day == 0 ? ` : کل` : `${abjadValue.day} : کل`;
       };
       let sumOfDigits = () => {
         let sum = 0;
@@ -420,7 +424,10 @@
           sum += num % 10;
           num = Math.floor(num / 10);
         }
-        document.getElementById("result").textContent = sum;
+        if (sum > 9) {
+          sum = sumOfDigits(sum);
+        }
+        document.getElementById("sumOfDigits").innerHTML = sum;
       };
       let total = () => {
         let sum = abjadValue.name + abjadValue.motherName + abjadValue.day;
