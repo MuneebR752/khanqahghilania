@@ -174,29 +174,31 @@
           <div class="row form-group">
             <p class="col-3 h5 text-right" id="nameTotal">: کل</p>
             <input
-              onchange="(abjadCalc(event))"
+              oninput="(abjadCalc(event))"
               name="name"
               id="name"
               type="text"
-              class="input col-6 form-control"
+              class="input col-sm-6 col-5 form-control"
             />
-            <label for="name" class="col-3 h5">: نام</label>
+            <label for="name" class="col-sm-3 col-4 h5">: نام</label>
           </div>
           <div class="row form-group">
             <p class="col-3 h5 text-right" id="motherNameTotal">: کل</p>
             <input
-              onchange="abjadCalc(event)"
+              oninput="abjadCalc(event)"
               name="motherName"
               id="motherName"
               type="text"
-              class="input col-6 form-control"
+              class="input col-sm-6 col-5 form-control"
             />
-            <label for="motherName" class="col-3 h5">: والدہ کا نام</label>
+            <label for="motherName" class="col-sm-3 col-4 h5"
+              >: والدہ کا نام</label
+            >
           </div>
           <div class="row form-group">
             <p class="h5 col-3 text-right" id="select">: کل</p>
             <select
-              class="form-control form-select col-6"
+              class="form-control form-select col-sm-6 col-5"
               id="day"
               name="day"
               onchange="setDay()"
@@ -210,22 +212,28 @@
               <option value="257">257 :ہفتہ /شنبه</option>
               <option value="387">387 :اتوار/یک‌شنبه</option>
             </select>
-            <label for="day" class="h5 col-3">: دن کے اعداد</label>
+            <label for="day" class="h5 col-sm-3 col-4">: دن کے اعداد</label>
           </div>
           <div class="col-12 text-center mt-4">
             <p class="h4">مجموعی اعداد <u id="total"></u></p>
           </div>
-          <div class="row justify-content-center mt-4">
-            <button class="btn btn-dark col-2 mx-5" onclick="calculate()">
+          <div class="row h6 justify-content-center mt-4">
+            <button
+              class="btn btn-dark col-4 col-sm-2 col-lg-2 mx-3"
+              onclick="calculate()"
+            >
               استخارہ کے لیے
             </button>
-            <button class="btn btn-dark col-2 mx-5" onclick="sumOfDigits()">
+            <button
+              class="btn btn-dark col-5 col-sm-3 col-md-4 col-lg-2 mx-3"
+              onclick="sumOfDigits()"
+            >
               لکی نمبر نکالنے کے لیے
             </button>
           </div>
           <div class="row text-center justify-content-center mt-4">
-            <p class="col-2 mx-5 h5" id="calculate"></p>
-            <p class="col-2 mx-5 h5" id="sumOfDigits"></p>
+            <p class="col-4 col-sm-2 mx-3 h5" id="calculate"></p>
+            <p class="col-4 col-sm-2 mx-3 h5" id="sumOfDigits"></p>
           </div>
         </div>
       </div>
@@ -397,7 +405,9 @@
         }
       };
       let abjadCalc = (e) => {
+        console.log(e.target.name);
         let abjadString = e.target.value;
+        console.log(abjadString);
         let value = 0;
         for (let i = 0; i < abjadString.length; i++) {
           if (
@@ -409,6 +419,7 @@
           value += abjad[abjadString[i]];
         }
         abjadValue[e.target.name] = value;
+        console.log(abjadValue[e.target.name]);
         document.getElementById(e.target.name + "Total").innerHTML =
           value == 0 ? ` : کل` : ` ${value} : کل`;
       };
