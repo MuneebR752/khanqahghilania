@@ -214,8 +214,8 @@
             </select>
             <label for="day" class="h5 col-sm-3 col-4">: دن کے اعداد</label>
           </div>
-          <div class="col-12 text-center mt-4">
-            <p class="h4">مجموعی اعداد <u id="total"></u></p>
+          <div class="col-12 mt-4">
+            <p class="h4 col-4 text-right">مجموعی اعداد <u id="total"></u></p>
           </div>
           <div class="row h6 justify-content-center mt-4">
             <button
@@ -226,7 +226,7 @@
             </button>
             <button
               class="btn btn-dark col-5 col-sm-3 col-md-4 col-lg-2 mx-3"
-              onclick="sumOfDigits()"
+              onclick="sumOfDigits(abjadValue.name)"
             >
               لکی نمبر نکالنے کے لیے
             </button>
@@ -397,15 +397,14 @@
             break;
           case 2:
             document.getElementById("calculate").textContent =
-              "بیرونی بخار : 2";
+              " جسمانی مرض : 2";
             break;
           case 3:
-            document.getElementById("calculate").textContent = "سحر جادہ : 3";
+            document.getElementById("calculate").textContent = " خلل آسیب : 3";
             break;
         }
       };
       let abjadCalc = (e) => {
-        console.log(e.target.name);
         let abjadString = e.target.value;
         console.log(abjadString);
         let value = 0;
@@ -419,36 +418,32 @@
           value += abjad[abjadString[i]];
         }
         abjadValue[e.target.name] = value;
-        console.log(abjadValue[e.target.name]);
         document.getElementById(e.target.name + "Total").innerHTML =
           value == 0 ? ` : کل` : ` ${value} : کل`;
+        total();
       };
       let setDay = () => {
         abjadValue.day = parseInt(document.querySelector("select").value);
         document.getElementById("select").innerHTML =
           abjadValue.day == 0 ? ` : کل` : `${abjadValue.day} : کل`;
+        total();
       };
-      let sumOfDigits = () => {
-        let sum = 0;
-        let num = abjadValue.name;
-        while (num) {
-          sum += num % 10;
-          num = Math.floor(num / 10);
+      function sumOfDigits(num) {
+        if (num < 10) {
+          return num;
         }
+        const sum = String(num)
+          .split("")
+          .reduce((acc, digit) => acc + Number(digit), 0);
         if (sum > 9) {
-          sum = sumOfDigits(sum);
+          return sumOfDigits(sum);
         }
         document.getElementById("sumOfDigits").innerHTML = sum;
-      };
+      }
       let total = () => {
         let sum = abjadValue.name + abjadValue.motherName + abjadValue.day;
-        document.getElementById("total").textContent = sum;
-        document.getElementById("name-total").textContent =
-          " " + abjadValue.name + " : کل";
-        document.getElementById("mother-name-total").textContent =
-          " " + abjadValue.motherName + " : کل";
-        document.getElementById("day-total").textContent =
-          " " + abjadValue.day + " : کل";
+        sum == 0 ? (sum = "") : sum;
+        document.getElementById("total").textContent = "  " + sum;
       };
     </script>
     <!-- All JS Custom Plugins Link Here here -->
