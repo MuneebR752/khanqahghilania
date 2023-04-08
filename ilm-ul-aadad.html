@@ -167,7 +167,21 @@
         </div>
       </div>
       <!-- Hero End -->
-      <div class="container my-5">
+      <div class="row h5 mx-auto justify-content-center mt-5 container">
+        <button
+          class="btn btn-dark col-4 col-sm-2 col-lg-2 mx-3"
+          onclick="showIstikhara()"
+        >
+          استخارہ کے لیے
+        </button>
+        <button
+          class="btn btn-dark col-5 col-sm-3 col-md-4 col-lg-2 mx-3"
+          onclick="showLuckyNo()"
+        >
+          لکی نمبر نکالنے کے لیے
+        </button>
+      </div>
+      <div id="istikhara" style="display: none" class="container my-5">
         <div
           class="row flex-column align-content-center justify-content-center"
         >
@@ -236,6 +250,32 @@
           <div class="row text-center justify-content-center mt-4">
             <p class="col-4 col-sm-2 mx-3 h5" id="calculate"></p>
             <!-- <p class="col-4 col-sm-2 mx-3 h5" id="sumOfDigits"></p> -->
+          </div>
+        </div>
+      </div>
+
+      <div id="luckyNo" style="display: none" class="container my-5">
+        <div class="row flex-column">
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="nameTotalLN">: کل</p>
+            <input
+              oninput="(abjadCalcLN(event))"
+              وووو
+              name="name"
+              id="name"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="name" class="col-sm-3 col-4 h5">: نام</label>
+          </div>
+          <div class="row h6 justify-content-center mt-4">
+            <button class="btn btn-dark" onclick="sumOfDigits(abjadValue.name)">
+              لکی نمبر نکالنے کے لیے
+            </button>
+          </div>
+          <div class="row text-center justify-content-center mt-4">
+            <!-- <p class="col-4 col-sm-2 mx-3 h5" id="calculate"></p> -->
+            <p class="col-4 col-sm-2 mx-3 h5" id="sumOfDigits"></p>
           </div>
         </div>
       </div>
@@ -324,6 +364,18 @@
 
     <!-- JS here -->
     <script>
+      let showIstikhara = () => {
+        let istikhara = document.getElementById("istikhara");
+        let luckyNo = document.getElementById("luckyNo");
+        luckyNo.style.display = "none";
+        istikhara.style.display = "block";
+      };
+      let showLuckyNo = () => {
+        let istikhara = document.getElementById("istikhara");
+        let luckyNo = document.getElementById("luckyNo");
+        istikhara.style.display = "none";
+        luckyNo.style.display = "block";
+      };
       let abjadValue = {
         name: 0,
         motherName: 0,
@@ -408,7 +460,6 @@
       };
       let abjadCalc = (e) => {
         let abjadString = e.target.value;
-        console.log(abjadString);
         let value = 0;
         for (let i = 0; i < abjadString.length; i++) {
           if (
@@ -423,6 +474,22 @@
         document.getElementById(e.target.name + "Total").innerHTML =
           value == 0 ? ` : کل` : ` ${value} : کل`;
         total();
+      };
+      let abjadCalcLN = (e) => {
+        let abjadString = e.target.value;
+        let value = 0;
+        for (let i = 0; i < abjadString.length; i++) {
+          if (
+            abjad[abjadString[i]] == undefined ||
+            abjad[abjadString[i]] == null
+          ) {
+            continue;
+          }
+          value += abjad[abjadString[i]];
+        }
+        abjadValue[e.target.name] = value;
+        document.getElementById(e.target.name + "TotalLN").innerHTML =
+          value == 0 ? ` : کل` : ` ${value} : کل`;
       };
       let setDay = () => {
         abjadValue.day = parseInt(document.querySelector("select").value);
