@@ -180,6 +180,7 @@
                 id="contactForm"
                 novalidate="novalidate"
                 netlify
+                netlify-honeypot="bot-field"
                 name="Amliyat_course"
               >
                 <div class="row">
@@ -194,6 +195,7 @@
                         onblur="this.placeholder = 'Enter your name'"
                         placeholder="Enter your name"
                       />
+                      <input class="d-none" type="text" name="bot-field" />
                     </div>
                   </div>
                   <div class="col-sm-6">
