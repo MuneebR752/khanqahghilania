@@ -179,8 +179,6 @@
                 method="post"
                 class="form-contact contact_form"
                 novalidate="novalidate"
-                netlify
-                netlify-honeypot="bot-field"
                 name="Contact"
               >
                 <div class="row">
@@ -195,7 +193,17 @@
                         onblur="this.placeholder = 'Enter your name'"
                         placeholder="Enter your name"
                       />
-                      <input class="d-none" type="text" name="bot-field" />
+                      <input class="d-none" type="checkbox" name="botcheck" />
+                      <input
+                        type="hidden"
+                        name="access_key"
+                        value="f54b4c19-40d9-41ba-a786-a6ca21795924"
+                      />
+                      <input
+                        type="hidden"
+                        name="subject"
+                        value="Contact Form Submission"
+                      />
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -406,25 +414,57 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       function formSubmission() {
-        console.log("object");
-        event.preventDefault();
-        let formData = {
-          name: document.getElementById("name").value,
-          email: document.getElementById("email").value,
-          subject: document.getElementById("subject").value,
-          message: document.getElementById("message").value,
-        };
+        // console.log("object");
+        // event.preventDefault();
+        // let formData = {
+        //   name: document.getElementById("name").value,
+        //   email: document.getElementById("email").value,
+        //   subject: document.getElementById("subject").value,
+        //   message: document.getElementById("message").value,
+        // };
 
-        axios
-          .post("https//localhost:5000/contact", formData)
-          .then((response) => {
-            console.log(response.data);
-            // do something with the response data
-          })
-          .catch((error) => {
-            console.error(error);
-            // handle error
-          });
+        // axios
+        //   .post("https//localhost:5000/contact", formData)
+        //   .then((response) => {
+        //     console.log(response.data);
+        //     // do something with the response data
+        //   })
+        //   .catch((error) => {
+        //     console.error(error);
+        //     // handle error
+        //   });
+        const regex = /^[a-zA-Z ]{2,30}$/;
+        const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        const regexPhone = /^[0-9]{10}$/;
+        const regexSubject = /^[a-zA-Z ]{2,30}$/;
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const subject = document.getElementById("subject").value;
+        const message = document.getElementById("message").value;
+        if (
+          regex.test(name) &&
+          regexEmail.test(email) &&
+          regexPhone.test(phone) &&
+          regexSubject.test(subject)
+        ) {
+          axios
+            .post("https://api.web3forms.com/submit", {
+              name,
+              email,
+              phone,
+              subject,
+              message,
+            })
+            .then((response) => {
+              alert(response.data);
+            })
+            .catch((error) => {
+              alert(error);
+            });
+        } else {
+          alert("Please fill the form correctly");
+        }
       }
       // }
     </script>
