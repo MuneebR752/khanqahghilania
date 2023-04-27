@@ -328,7 +328,11 @@ button {
 }
 
 /* line 96, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
-button:focus, input:focus, input:focus, textarea, textarea:focus {
+button:focus,
+input:focus,
+input:focus,
+textarea,
+textarea:focus {
   outline: 0;
 }
 
@@ -340,9 +344,9 @@ button:focus, input:focus, input:focus, textarea, textarea:focus {
 /* line 101, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
 input:focus::-moz-placeholder {
   opacity: 0;
-  -webkit-transition: .4s;
-  -o-transition: .4s;
-  transition: .4s;
+  -webkit-transition: 0.4s;
+  -o-transition: 0.4s;
+  transition: 0.4s;
 }
 
 /* line 108, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
@@ -424,7 +428,7 @@ hr {
 .overlay2::before {
   position: absolute;
   content: "";
-  background-color: #2E2200;
+  background-color: #2e2200;
   top: 0;
   left: 0;
   width: 100%;
@@ -572,7 +576,8 @@ a:hover {
 }
 
 /* line 306, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
-.btn.focus, .btn:focus {
+.btn.focus,
+.btn:focus {
   outline: 0;
   box-shadow: none;
 }
@@ -731,7 +736,8 @@ hero-btn {
 
 /* scrollUp */
 /* line 431, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
-#scrollUp, #back-top {
+#scrollUp,
+#back-top {
   background: #14435c;
   height: 50px;
   width: 50px;
@@ -750,13 +756,15 @@ hero-btn {
 
 @media (max-width: 575px) {
   /* line 431, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
-  #scrollUp, #back-top {
+  #scrollUp,
+  #back-top {
     right: 16px;
   }
 }
 
 /* line 449, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
-#scrollUp a i, #back-top a i {
+#scrollUp a i,
+#back-top a i {
   display: block;
   line-height: 50px;
 }
@@ -2493,9 +2501,9 @@ hero-btn {
   right: 0;
   bottom: 0;
   z-index: 999999;
-  -webkit-transition: .6s;
-  -o-transition: .6s;
-  transition: .6s;
+  -webkit-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
   margin: 0 auto;
 }
 
@@ -2517,9 +2525,9 @@ hero-btn {
   background-color: #fff;
   -webkit-animation: zoom 2000ms infinite ease;
   animation: zoom 2000ms infinite ease;
-  -webkit-transition: .6s;
-  -o-transition: .6s;
-  transition: .6s;
+  -webkit-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
 }
 
 /* line 645, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
@@ -2541,9 +2549,9 @@ hero-btn {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   padding-top: 6px;
-  -webkit-transition: .6s;
-  -o-transition: .6s;
-  transition: .6s;
+  -webkit-transition: 0.6s;
+  -o-transition: 0.6s;
+  transition: 0.6s;
 }
 
 /* line 666, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_common.scss */
@@ -2562,16 +2570,16 @@ hero-btn {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: .6s;
-    -o-transition: .6s;
-    transition: .6s;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
   }
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
-    -webkit-transition: .6s;
-    -o-transition: .6s;
-    transition: .6s;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
   }
 }
 
@@ -2579,16 +2587,16 @@ hero-btn {
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
-    -webkit-transition: .6s;
-    -o-transition: .6s;
-    transition: .6s;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
   }
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
-    -webkit-transition: .6s;
-    -o-transition: .6s;
-    transition: .6s;
+    -webkit-transition: 0.6s;
+    -o-transition: 0.6s;
+    transition: 0.6s;
   }
 }
 
@@ -4412,7 +4420,7 @@ hero-btn {
 
 /* line 51, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_team.scss */
 .brand-area .single-brand.slick-slide {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 /* line 59, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_team.scss */
@@ -4565,7 +4573,11 @@ hero-btn {
 
 @media (max-width: 575px) {
   /* line 64, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_testimonial.scss */
-  .testimonial-area .testimonial-caption .testimonial-founder .founder-text span {
+  .testimonial-area
+    .testimonial-caption
+    .testimonial-founder
+    .founder-text
+    span {
     font-size: 26px;
   }
 }
@@ -4746,14 +4758,25 @@ hero-btn {
 }
 
 /* line 78, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_footer.scss */
-.footer-area .footer-top .single-footer-caption .footer-form form input::placeholder {
+.footer-area
+  .footer-top
+  .single-footer-caption
+  .footer-form
+  form
+  input::placeholder {
   color: #9fa6bd;
   font-weight: 300;
   font-size: 14px;
 }
 
 /* line 85, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_footer.scss */
-.footer-area .footer-top .single-footer-caption .footer-form form .form-icon button {
+.footer-area
+  .footer-top
+  .single-footer-caption
+  .footer-form
+  form
+  .form-icon
+  button {
   position: absolute;
   top: 0px;
   right: 0;
@@ -5112,16 +5135,17 @@ hero-btn {
 .blog_area a {
   color: "Roboto", sans-serif !important;
   text-decoration: none;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 /* line 136, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
-.blog_area a:hover, .blog_area a :hover {
+.blog_area a:hover,
+.blog_area a :hover {
   background: -webkit-linear-gradient(131deg, #14435c 0%, #14435c 99%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
-  transition: .4s;
+  transition: 0.4s;
 }
 
 /* line 146, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
@@ -5143,7 +5167,7 @@ hero-btn {
 
 /* line 158, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
 .single-blog .thumb:after {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -5193,7 +5217,7 @@ hero-btn {
 
 /* line 206, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
 .single-blog .tag:after {
-  content: '';
+  content: "";
   position: absolute;
   width: 1px;
   height: 10px;
@@ -5252,7 +5276,7 @@ hero-btn {
 
 /* line 257, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
 .single-blog:hover .thumb:after {
-  opacity: .7;
+  opacity: 0.7;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -6264,7 +6288,7 @@ hero-btn {
 
 /* line 1389, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
 .single-post-area .navigation-area .nav-left:hover .thumb img {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 @media (max-width: 767px) {
@@ -6312,7 +6336,7 @@ hero-btn {
 
 /* line 1424, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_blog_page.scss */
 .single-post-area .navigation-area .nav-right:hover .thumb img {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 @media (max-width: 991px) {
@@ -6544,7 +6568,8 @@ hero-btn {
 }
 
 /* line 16, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_contact.scss */
-.contact-info__icon i, .contact-info__icon span {
+.contact-info__icon i,
+.contact-info__icon span {
   color: #8f9195;
   font-size: 27px;
 }
@@ -6783,7 +6808,7 @@ hero-btn {
 .popup_box h3 {
   text-align: center;
   font-size: 22px;
-  color: #1F1F1F;
+  color: #1f1f1f;
   margin-bottom: 46px;
 }
 
@@ -6798,7 +6823,7 @@ hero-btn {
   -webkit-tap-highlight-color: transparent;
   background-color: #fff;
   /* border-radius: 5px; */
-  border: solid 1px #E2E2E2;
+  border: solid 1px #e2e2e2;
   box-sizing: border-box;
   clear: both;
   cursor: pointer;
@@ -6927,7 +6952,7 @@ hero-btn {
   touch-action: manipulation;
   width: 40px;
   height: 40px;
-  background: #4A3600;
+  background: #4a3600;
   text-align: center;
   line-height: 20px;
   position: absolute;
@@ -6948,7 +6973,7 @@ hero-btn {
   z-index: 1042;
   overflow: hidden;
   position: fixed;
-  background: #4A3600;
+  background: #4a3600;
   opacity: 0.6;
 }
 
@@ -6983,9 +7008,21 @@ hero-btn {
 
 /* line 13, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_extend.scss */
 .overlay::before {
-  background-image: -moz-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%);
-  background-image: -webkit-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%);
-  background-image: -ms-linear-gradient(170deg, rgba(34, 34, 34, 0) 0%, black 100%);
+  background-image: -moz-linear-gradient(
+    170deg,
+    rgba(34, 34, 34, 0) 0%,
+    black 100%
+  );
+  background-image: -webkit-linear-gradient(
+    170deg,
+    rgba(34, 34, 34, 0) 0%,
+    black 100%
+  );
+  background-image: -ms-linear-gradient(
+    170deg,
+    rgba(34, 34, 34, 0) 0%,
+    black 100%
+  );
 }
 
 /* line 76, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
@@ -7047,7 +7084,7 @@ del {
   outline: none;
   line-height: 40px;
   padding: 0 30px;
-  font-size: .8em;
+  font-size: 0.8em;
   text-align: center;
   text-decoration: none;
   font-weight: 500;
@@ -7880,7 +7917,8 @@ del {
 
 /* line 766, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
 .primary-checkbox input:checked + label {
-  background: url(../img/elements/primary-check.png) no-repeat center center/cover;
+  background: url(../img/elements/primary-check.png) no-repeat center
+    center/cover;
   border: none;
 }
 
@@ -7922,7 +7960,8 @@ del {
 
 /* line 803, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
 .confirm-checkbox input:checked + label {
-  background: url(../img/elements/success-check.png) no-repeat center center/cover;
+  background: url(../img/elements/success-check.png) no-repeat center
+    center/cover;
   border: none;
 }
 
@@ -7970,7 +8009,8 @@ del {
 
 /* line 844, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
 .disabled-checkbox input:checked + label {
-  background: url(../img/elements/disabled-check.png) no-repeat center center/cover;
+  background: url(../img/elements/disabled-check.png) no-repeat center
+    center/cover;
   border: none;
 }
 
@@ -8012,7 +8052,8 @@ del {
 
 /* line 881, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
 .primary-radio input:checked + label {
-  background: url(../img/elements/primary-radio.png) no-repeat center center/cover;
+  background: url(../img/elements/primary-radio.png) no-repeat center
+    center/cover;
   border: none;
 }
 
@@ -8054,7 +8095,8 @@ del {
 
 /* line 918, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
 .confirm-radio input:checked + label {
-  background: url(../img/elements/success-radio.png) no-repeat center center/cover;
+  background: url(../img/elements/success-radio.png) no-repeat center
+    center/cover;
   border: none;
 }
 
@@ -8102,7 +8144,8 @@ del {
 
 /* line 959, C:/Users/HP/Desktop/264.Business_HTML/HTML/assets/scss/_elements.scss */
 .disabled-radio input:checked + label {
-  background: url(../img/elements/disabled-radio.png) no-repeat center center/cover;
+  background: url(../img/elements/disabled-radio.png) no-repeat center
+    center/cover;
   border: none;
 }
 
