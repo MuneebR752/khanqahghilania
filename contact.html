@@ -181,7 +181,6 @@
                 class="form-contact contact_form"
                 novalidate="novalidate"
                 name="Contact"
-                onsubmit="formSubmission()"
               >
                 <div class="row">
                   <div class="col-sm-6">
@@ -221,21 +220,34 @@
                       />
                     </div>
                   </div>
+
                   <div class="col-12">
                     <div class="form-group">
                       <input
                         class="form-control"
-                        name="subject"
-                        id="subject"
+                        name="phone"
+                        id="phone"
                         type="tel"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter Subject'"
-                        placeholder="Enter Subject"
+                        onblur="this.placeholder = 'Enter Your WhatsApp Phone Number'"
+                        placeholder="Enter Your WhatsApp Phone Number"
                         pattern="[+]{1}[0-9]{11,14}"
                       />
                     </div>
                   </div>
-
+                  <div class="col-12">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="Subject"
+                        id="subject"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter Subject'"
+                        placeholder="Enter Subject"
+                      />
+                    </div>
+                  </div>
                   <div class="col-12">
                     <div class="form-group">
                       <textarea
@@ -253,7 +265,6 @@
                 </div>
                 <div class="form-group mt-3">
                   <button
-                    onclick="formSubmission()"
                     type="submit"
                     class="button button-contactForm boxed-btn"
                   >
@@ -416,37 +427,61 @@
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      function formSubmission() {
-        const form = document.getElementById("contactForm");
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
-          const formData = new FormData(form);
-          const object = Object.fromEntries(formData);
-          const json = JSON.stringify(object);
+      function handleSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.elements.name.value;
+        const email = form.elements.email.value;
+        const phone = form.elements.phone.value;
+        const message = form.elements.message.value;
+        const subject = form.elements.Subject.value;
+        const regex = /^[a-zA-Z ]{3,30}$/;
+        const regexPhone = /^[+]{1}[0-9]{11,14}$/;
 
-          fetch("https://api.web3forms.com/submit", {
-            method: "POST",
+        if (!regex.test(name)) {
+          alert("Please enter a valid name");
+          return false;
+        }
+
+        if (!regexPhone.test(phone)) {
+          alert("Please enter a valid phone number");
+          return false;
+        }
+
+        if (!regex.test(subject)) {
+          alert("Please enter a valid subject");
+          return false;
+        }
+
+        const formData = new FormData(form);
+        let object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        axios
+          .post("https://api.web3forms.com/submit", json, {
             headers: {
               "Content-Type": "application/json",
               Accept: "application/json",
             },
-            body: json,
           })
-            .then(async (response) => {
-              let json = await response.json();
-              if (response.status == 200) {
-                alert(json.message);
-              } else {
-                console.log(response);
-                alert(json.message);
-              }
-            })
-            .catch((error) => {
-              console.log(error);
+          .then((response) => {
+            const data = response.data;
+            if (response.status === 200) {
+              alert(data.message);
+              form.reset(); // Reset form on successful submission
+            } else {
+              console.error(response);
               alert("Something went wrong!");
-            });
-        });
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            alert("Something went wrong!");
+          });
       }
+
+      const form = document.getElementById("contactForm");
+      form.addEventListener("submit", handleSubmit);
       // }
     </script>
     <!-- All JS Custom Plugins Link Here here -->
