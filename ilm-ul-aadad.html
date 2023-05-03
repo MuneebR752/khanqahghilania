@@ -175,16 +175,22 @@
           استخارہ کے لیے
         </button>
         <button
-          class="btn btn-dark col-5 col-sm-3 col-md-4 col-lg-2 mx-3"
+          class="btn btn-dark col-3 col-sm-3 col-md-4 col-lg-2 mx-3"
           onclick="showLuckyNo()"
         >
           لکی نمبر نکالنے کے لیے
         </button>
         <button
-          class="btn btn-dark col-5 col-sm-3 col-md-4 col-lg-2 mx-3"
+          class="btn btn-dark col-3 col-sm-3 col-md-4 col-lg-2 mx-3"
           onclick="showMarraige()"
         >
           شادی کے استخارہ کے لیے
+        </button>
+        <button
+          class="btn btn-dark col-3 col-sm-3 col-md-4 col-lg-2 mx-3"
+          onclick="showStar()"
+        >
+          برج اور ستارہ معلوم کرنےکے لیے
         </button>
       </div>
       <div id="istikhara" style="display: none" class="container my-5">
@@ -349,6 +355,54 @@
           </div>
         </div>
       </div>
+
+      <did id="star" style="display: none" class="container my-5">
+        <div
+          class="row flex-column align-content-center justify-content-center"
+        >
+          <!-- portion to copy -->
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="nameTotalS">: کل</p>
+            <input
+              oninput="(abjadCalcStar(event))"
+              name="name"
+              id="nameStar"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="name" class="col-sm-3 col-4 h5">: نام</label>
+          </div>
+          <!-- till here  -->
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="motherNameTotalS">: کل</p>
+            <input
+              oninput="abjadCalcStar(event)"
+              name="motherName"
+              id="motherNameS"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="motherName" class="col-sm-3 col-4 h5"
+              >: والدہ کا نام</label
+            >
+          </div>
+          <div class="col-12 mt-4">
+            <p class="h4 col-4 text-right">مجموعی اعداد <u id="totalS"></u></p>
+          </div>
+          <div class="row h6 justify-content-center mt-4">
+            <button
+              class="btn btn-dark col-4 col-sm-2 col-lg-2 mx-3"
+              onclick="calculateStar()"
+            >
+              نتیجہ
+            </button>
+          </div>
+          <div class="row text-center justify-content-center mt-4">
+            <p class="mx-3 h5" id="calculateS"></p>
+            <p class="mx-3 h5" id="calculateSS"></p>
+          </div>
+        </div>
+      </did>
       <!--? About Area Start -->
     </main>
     <footer>
@@ -460,7 +514,7 @@
                   <div class="footer-tittle">
                     <h4><a href="contact.html">Contact</a></h4>
                     <ul>
-                      <li>Basti Shehni Wali Ward #7 Jhang, Punjab Pakistan</li>
+                      <li>Samanabad Lahore, Punjab Pakistan</li>
                       <li>Phone: +92 321 4255894</li>
                       <li>Email: support@khanqahghilania.org</li>
                     </ul>
@@ -481,6 +535,8 @@
         let marraige = document.getElementById("marraige");
         let istikhara = document.getElementById("istikhara");
         let luckyNo = document.getElementById("luckyNo");
+        let star = document.getElementById("star");
+        star.style.display = "none";
         marraige.style.display = "block";
         istikhara.style.display = "none";
         luckyNo.style.display = "none";
@@ -489,6 +545,8 @@
         let istikhara = document.getElementById("istikhara");
         let luckyNo = document.getElementById("luckyNo");
         let marraige = document.getElementById("marraige");
+        let star = document.getElementById("star");
+        star.style.display = "none";
         luckyNo.style.display = "none";
         istikhara.style.display = "block";
         marraige.style.display = "none";
@@ -497,9 +555,21 @@
         let istikhara = document.getElementById("istikhara");
         let luckyNo = document.getElementById("luckyNo");
         let marraige = document.getElementById("marraige");
+        let star = document.getElementById("star");
+        star.style.display = "none";
         marraige.style.display = "none";
         istikhara.style.display = "none";
         luckyNo.style.display = "block";
+      };
+      let showStar = () => {
+        let star = document.getElementById("star");
+        let istikhara = document.getElementById("istikhara");
+        let luckyNo = document.getElementById("luckyNo");
+        let marraige = document.getElementById("marraige");
+        marraige.style.display = "none";
+        istikhara.style.display = "none";
+        luckyNo.style.display = "none";
+        star.style.display = "block";
       };
       let abjadValue = {
         name: 0,
@@ -509,6 +579,82 @@
       let tAbjadValue = NaN;
       let result = "";
 
+      let abjadCalcStar = (e) => {
+        let abjadString = e.target.value;
+        let value = 0;
+        for (let i = 0; i < abjadString.length; i++) {
+          if (
+            abjad[abjadString[i]] == undefined ||
+            abjad[abjadString[i]] == null
+          ) {
+            continue;
+          }
+          value += abjad[abjadString[i]];
+        }
+        abjadValue[e.target.name] = value;
+
+        abjadValue[e.target.name] = value;
+        document.getElementById(e.target.name + "TotalS").innerHTML =
+          value == 0 ? ` : کل` : ` ${value} : کل`;
+        let sum = abjadValue.name + abjadValue.motherName;
+        sum == 0 ? (sum = "") : sum;
+        document.getElementById("totalS").innerHTML = sum;
+      };
+      let calculateStar = () => {
+        let sum = abjadValue.name + abjadValue.motherName;
+        let result = sum % 12;
+        switch (result) {
+          case 0:
+            document.getElementById("calculateS").innerHTML = "برج : حمل";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : مریخ";
+
+            break;
+          case 1:
+            document.getElementById("calculateS").innerHTML = "برج : ثور";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : زہرہ";
+            break;
+          case 2:
+            document.getElementById("calculateS").innerHTML = "برج : جوزا";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : عطارد";
+            break;
+          case 3:
+            document.getElementById("calculateS").innerHTML = "برج : سرطان";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : قمر";
+            break;
+          case 4:
+            document.getElementById("calculateS").innerHTML = "برج : اسد";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : شمس";
+            break;
+          case 5:
+            document.getElementById("calculateS").innerHTML = "برج : سنبلہ";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : عطارد";
+            break;
+          case 6:
+            document.getElementById("calculateS").innerHTML = "برج : میزان";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : زہرہ";
+            break;
+          case 7:
+            document.getElementById("calculateS").innerHTML = "برج : عقرب";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : مریخ";
+            break;
+          case 8:
+            document.getElementById("calculateS").innerHTML = "برج : قوس";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : مشتری";
+            break;
+          case 9:
+            document.getElementById("calculateS").innerHTML = "برج : جدی";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : زحل";
+            break;
+          case 10:
+            document.getElementById("calculateS").innerHTML = "برج : دلو";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : زحل";
+            break;
+          case 11:
+            document.getElementById("calculateS").innerHTML = "برج : حوت";
+            document.getElementById("calculateSS").innerHTML = "ستارہ : مشتری";
+            break;
+        }
+      };
       const abjad = {
         ا: 1,
         آ: 1,
