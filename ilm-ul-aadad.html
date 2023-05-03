@@ -168,28 +168,16 @@
       </div>
       <!-- Hero End -->
       <div class="row h5 mx-auto justify-content-center mt-5 container">
-        <button
-          class="btn btn-dark col-4 col-sm-2 col-lg-2 mx-3"
-          onclick="showIstikhara()"
-        >
+        <button class="btn btn-dark mx-3" onclick="showIstikhara()">
           استخارہ کے لیے
         </button>
-        <button
-          class="btn btn-dark col-3 col-sm-3 col-md-4 col-lg-2 mx-3"
-          onclick="showLuckyNo()"
-        >
+        <button class="btn btn-dark mx-3" onclick="showLuckyNo()">
           لکی نمبر نکالنے کے لیے
         </button>
-        <button
-          class="btn btn-dark col-3 col-sm-3 col-md-4 col-lg-2 mx-3"
-          onclick="showMarraige()"
-        >
+        <button class="btn btn-dark mx-3" onclick="showMarraige()">
           شادی کے استخارہ کے لیے
         </button>
-        <button
-          class="btn btn-dark col-3 col-sm-3 col-md-4 col-lg-2 mx-3"
-          onclick="showStar()"
-        >
+        <button class="btn btn-dark mx-3" onclick="showStar()">
           برج اور ستارہ معلوم کرنےکے لیے
         </button>
       </div>
@@ -397,7 +385,7 @@
               نتیجہ
             </button>
           </div>
-          <div class="row text-center justify-content-center mt-4">
+          <div class="text-center justify-content-center mt-4">
             <p class="mx-3 h5" id="calculateS"></p>
             <p class="mx-3 h5" id="calculateSS"></p>
           </div>
@@ -602,6 +590,9 @@
       };
       let calculateStar = () => {
         let sum = abjadValue.name + abjadValue.motherName;
+        if (sum == 0) {
+          return;
+        }
         let result = sum % 12;
         switch (result) {
           case 0:
@@ -716,6 +707,9 @@
       };
       let calculate = () => {
         let total = abjadValue.name + abjadValue.motherName + abjadValue.day;
+        if (total == 0) {
+          return;
+        }
         let result = total % 4;
         switch (result) {
           case 0:
@@ -817,7 +811,11 @@
           abjadValueM.FmotherName +
           abjadValueM.Mname +
           abjadValueM.MmotherName;
+        if (total == 0) {
+          return;
+        }
         let result = total % 3;
+
         switch (result) {
           case 0:
             document.getElementById("calculateM").textContent =
