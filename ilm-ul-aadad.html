@@ -284,28 +284,53 @@
         >
           <!-- portion to copy -->
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="nameTotalM">: کل</p>
+            <p class="col-3 h5 text-right" id="MnameTotalM">: کل</p>
             <input
               oninput="(abjadCalcM(event))"
-              name="name"
-              id="nameM"
+              name="Mname"
+              id="MnameM"
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
-            <label for="name" class="col-sm-3 col-4 h5">: نام</label>
+            <label for="MnameM" class="col-sm-3 col-4 h5">: لڑکے کانام</label>
           </div>
           <!-- till here  -->
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="motherNameTotalM">: کل</p>
+            <p class="col-3 h5 text-right" id="MmotherNameTotalM">: کل</p>
             <input
               oninput="abjadCalcM(event)"
-              name="motherName"
-              id="motherNameM"
+              name="MmotherName"
+              id="MmotherName"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="MmotherNameM" class="col-sm-3 col-4 h5"
+              >: لڑکے کی والدہ کا نام
+            </label>
+          </div>
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="FnameTotalM">: کل</p>
+            <input
+              oninput="(abjadCalcM(event))"
+              name="Fname"
+              id="Fname"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="Fname" class="col-sm-3 col-4 h5">: لڑکی کا نام</label>
+          </div>
+          <!-- till here  -->
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="FmotherNameTotalM">: کل</p>
+            <input
+              oninput="abjadCalcM(event)"
+              name="FmotherName"
+              id="FmotherName"
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
             <label for="motherNameM" class="col-sm-3 col-4 h5"
-              >: والدہ کا نام</label
+              >: لڑکی کی والدہ کا نام</label
             >
           </div>
           <div class="col-12 mt-4">
@@ -537,7 +562,12 @@
         ھ: 5,
         ڈ: 4,
       };
-
+      let abjadValueM = {
+        Mname: 0,
+        MmotherName: 0,
+        Fname: 0,
+        FmotherName: 0,
+      };
       let calculate = () => {
         let total = abjadValue.name + abjadValue.motherName + abjadValue.day;
         let result = total % 4;
@@ -589,11 +619,15 @@
           }
           value += abjad[abjadString[i]];
         }
-        abjadValue[e.target.name] = value;
+        abjadValueM[e.target.name] = value;
         document.getElementById(e.target.name + "TotalM").innerHTML =
           value == 0 ? ` : کل` : ` ${value} : کل`;
 
-        let sum = abjadValue.name + abjadValue.motherName;
+        let sum =
+          abjadValueM.Fname +
+          abjadValueM.FmotherName +
+          abjadValueM.Mname +
+          abjadValueM.MmotherName;
         sum == 0 ? (sum = "") : sum;
         document.getElementById("totalM").textContent = "  " + sum;
       };
@@ -632,8 +666,12 @@
         document.getElementById("sumOfDigits").innerHTML = sum;
       }
       let marraigeCalc = () => {
-        let total = abjadValue.name + abjadValue.motherName;
-        let result = total % 4;
+        let total =
+          abjadValueM.Fname +
+          abjadValueM.FmotherName +
+          abjadValueM.Mname +
+          abjadValueM.MmotherName;
+        let result = total % 3;
         switch (result) {
           case 0:
             document.getElementById("calculateM").textContent =
