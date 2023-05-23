@@ -10,21 +10,21 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="assets/img/logo/Khanqah Qadria DP.png"
+      href="../assets/img/logo/Khanqah Qadria DP.png"
     />
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="assets/css/slicknav.css" />
-    <link rel="stylesheet" href="assets/css/flaticon.css" />
-    <link rel="stylesheet" href="assets/css/animate.min.css" />
-    <link rel="stylesheet" href="assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
-    <link rel="stylesheet" href="assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="assets/css/slick.css" />
-    <link rel="stylesheet" href="assets/css/nice-select.css" />
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../assets/css/slicknav.css" />
+    <link rel="stylesheet" href="../assets/css/flaticon.css" />
+    <link rel="stylesheet" href="../assets/css/animate.min.css" />
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/slick.css" />
+    <link rel="stylesheet" href="../assets/css/nice-select.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
 
   <body class="body-bg">
@@ -34,7 +34,7 @@
         <div class="preloader-inner position-relative">
           <div class="preloader-circle"></div>
           <div class="preloader-img pere-text">
-            <img src="assets/img/logo/Untitled-2.png" alt="" />
+            <img src="../assets/img/logo/Untitled-2.png" alt="" />
           </div>
         </div>
       </div>
@@ -91,9 +91,9 @@
                 <!-- Logo -->
                 <div class="col-xl-2 col-lg-2">
                   <div class="logo h3">
-                    <a href="./index.html">
+                    <a href="../index.html">
                       <img
-                        src="./assets/img/logo/Untitled-2.png"
+                        src="../assets/img/logo/Untitled-2.png"
                         alt="logo"
                         srcset=""
                         width="75"
@@ -109,18 +109,18 @@
                     <div class="main-menu d-none d-lg-block">
                       <nav>
                         <ul id="navigation">
-                          <li><a href="index.html">Home</a></li>
-                          <li><a href="about.html">About</a></li>
+                          <li><a href="../index.html">Home</a></li>
+                          <li><a href="../about.html">About</a></li>
                           <li>
-                            <a href="services.html">Services</a>
+                            <a href="./index.html">Services</a>
                             <ul class="submenu">
                               <li>
-                                <a href="istikhara.html">Istikhara</a>
+                                <a href="./istikhara.html">Istikhara</a>
                               </li>
-                              <li><a href="kaat.html">Kaat</a></li>
-                              <li><a href="taweezat.html">Taweezat</a></li>
+                              <li><a href="./kaat.html">Kaat</a></li>
+                              <li><a href="./taweezat.html">Taweezat</a></li>
                               <li>
-                                <a href="amliyat_courses.html"
+                                <a href="./amliyat_courses.html"
                                   >Amliyat Courses</a
                                 >
                               </li>
@@ -130,11 +130,13 @@
                                 >
                               </li>
                               <li>
-                                <a href="./ilm-ul-aadad.html">Ilm u Aadad</a>
+                                <a href="./ilm-ul-aadad/index.html"
+                                  >Ilm u Aadad</a
+                                >
                               </li>
                             </ul>
                           </li>
-                          <li><a href="contact.html">Contact</a></li>
+                          <li><a href="../contact.html">Contact</a></li>
                         </ul>
                       </nav>
                     </div>
@@ -159,7 +161,7 @@
             <div class="row">
               <div class="col-xl-12">
                 <div class="hero-cap hero-cap2 text-center">
-                  <h2>Our Services</h2>
+                  <h2>Abjad Calculator</h2>
                 </div>
               </div>
             </div>
@@ -167,140 +169,141 @@
         </div>
       </div>
       <!-- Hero End -->
-      <!--? Categories Area Start -->
-      <div class="categories-area section-padding30">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
-              <!-- Section Tittle -->
-              <div class="section-tittle mb-70">
-                <span>Our Top Services</span>
-                <h2>Our Best Services</h2>
-              </div>
+      <div class="container my-5">
+        <div class="row flex-column">
+          <div class="row container">
+            <div class="col-4 col-md-1 col-sm-3 py-2">
+              <span id="result"></span>
+              <span> : کل</span>
             </div>
+            <input
+              style="overflow-x: scroll"
+              id="textInput"
+              type="text"
+              name="textInput"
+              class="col-8 col-sm-9 col-md-11 form-control"
+              oninput="abjadCalc(event)"
+            />
           </div>
-          <div class="row">
-            <div
-              onclick=" window.location.href = './istikhara.html';"
-              class="col-lg-4 col-md-6 col-sm-6"
-            >
-              <div class="single-cat text-center mb-50">
-                <div class="cat-icon">
-                  <span class="flaticon-development"></span>
-                </div>
-                <div class="cat-cap">
-                  <h5><a href="istikhara.html">Istikhara</a></h5>
-                  <p>
-                    Muslims who are in need of guidance from Allah when facing a
-                    decision in their life
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div
-              onclick="window.location.href= './kaat.html'"
-              class="col-lg-4 col-md-6 col-sm-6"
-            >
-              <div class="single-cat text-center mb-50">
-                <div class="cat-icon">
-                  <span class="flaticon-result"></span>
-                </div>
-                <div class="cat-cap">
-                  <h5><a href="kaat.html">Online Kaat</a></h5>
-                  <p>
-                    Muslims who are facing difficulties in life contacts us on
-                    daily basis for Kaat
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              onclick="window.location.href= './taweezat.html'"
-              class="col-lg-4 col-md-6 col-sm-6"
-            >
-              <div class="single-cat text-center mb-50">
-                <div class="cat-icon">
-                  <span class="flaticon-team"></span>
-                </div>
-                <div class="cat-cap">
-                  <h5><a href="taweezat.html">Taweezat</a></h5>
-                  <p>
-                    Taweezat are provided to muslims who are facing difficulties
-                    in life.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              onclick="window.location.href= './amliyat_courses.html'"
-              class="col-lg-4 col-md-6 col-sm-6"
-            >
-              <div class="single-cat text-center mb-50">
-                <div class="cat-icon">
-                  <span class="flaticon-result"></span>
-                </div>
-                <div class="cat-cap">
-                  <h5>
-                    <a href="amliyat_courses.html">Amliyat Islamic Courses</a>
-                  </h5>
-                  <p>
-                    There are many variations of passages available but the new
-                    majority have suffered.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              onclick="window.location.href= './ilm-ul-aadad.html'"
-              class="col-lg-4 col-md-6 col-sm-6"
-            >
-              <div class="single-cat text-center mb-50">
-                <div class="cat-icon">
-                  <span class="flaticon-team"></span>
-                </div>
-                <div class="cat-cap">
-                  <h5>
-                    <a href="./ilm-ul-aadad.html">Ilm ul Aad Istikhara</a>
-                  </h5>
-                  <p>
-                    There are many variations of passages of lorem Ipsum
-                    available but the new majority have suffered.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div
-              onclick="window.location.href= './abjad_calculator.html'"
-              class="col-lg-4 col-md-6 col-sm-6"
-            >
-              <div class="single-cat text-center mb-50">
-                <div class="cat-icon">
-                  <span class="flaticon-development"></span>
-                </div>
-                <div class="cat-cap">
-                  <h5>
-                    <a href="./abjad_calculator.html">Abjad Calculator</a>
-                  </h5>
-                  <p>
-                    There are many variations of passages of lorem Ipsum
-                    available but the new majority have suffered.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <p class="text-center" id="abjarr"></p>
+        </div>
+        <div style="overflow-x: scroll">
+          <table class="table table-bordered h5 my-5">
+            <tbody>
+              <tr>
+                <td>ا</td>
+                <td>1</td>
+                <td>آ</td>
+                <td>1</td>
+                <td>أ</td>
+                <td>1</td>
+                <td>إ</td>
+                <td>1</td>
+                <td>ٱ</td>
+                <td>1</td>
+                <td>ء</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>ب</td>
+                <td>2</td>
+                <td>پ</td>
+                <td>2</td>
+                <td>ج</td>
+                <td>3</td>
+                <td>چ</td>
+                <td>3</td>
+                <td>د</td>
+                <td>4</td>
+                <td>ه</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>ة</td>
+                <td>5</td>
+                <td>ۀ</td>
+                <td>5</td>
+                <td>و</td>
+                <td>6</td>
+                <td>ؤ</td>
+                <td>6</td>
+                <td>ز</td>
+                <td>7</td>
+                <td>ژ</td>
+                <td>7</td>
+              </tr>
+              <tr>
+                <td>ح</td>
+                <td>8</td>
+                <td>ط</td>
+                <td>9</td>
+                <td>ي</td>
+                <td>10</td>
+                <td>ی</td>
+                <td>10</td>
+                <td>ى</td>
+                <td>10</td>
+                <td>ئ</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>ك</td>
+                <td>20</td>
+                <td>گ</td>
+                <td>20</td>
+                <td>ک</td>
+                <td>20</td>
+                <td>ل</td>
+                <td>30</td>
+                <td>م</td>
+                <td>40</td>
+                <td>ن</td>
+                <td>50</td>
+              </tr>
+              <tr>
+                <td>س</td>
+                <td>60</td>
+                <td>ع</td>
+                <td>70</td>
+                <td>ف</td>
+                <td>80</td>
+                <td>ص</td>
+                <td>90</td>
+                <td>ق</td>
+                <td>100</td>
+                <td>ر</td>
+                <td>200</td>
+              </tr>
+              <tr>
+                <td>ش</td>
+                <td>300</td>
+                <td>ت</td>
+                <td>400</td>
+                <td>ث</td>
+                <td>500</td>
+                <td>خ</td>
+                <td>600</td>
+                <td>ذ</td>
+                <td>700</td>
+                <td>ض</td>
+                <td>800</td>
+              </tr>
+              <tr>
+                <td>ظ</td>
+                <td>900</td>
+                <td>غ</td>
+                <td>1000</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <!-- Services Area End -->
-      <!-- Brand Area Start -->
-      <!-- Brand Area End -->
     </main>
     <footer>
       <!--? Footer Start-->
       <div
         class="footer-area section-bg"
-        data-background="assets/img/gallery/footer_bg.jpg"
+        data-background="../assets/img/gallery/footer_bg.jpg"
       >
         <div class="container">
           <div class="footer-top footer-padding">
@@ -309,7 +312,7 @@
                 <div class="single-footer-caption mb-50">
                   <!-- logo -->
                   <div class="footer-logo h3">
-                    <a href="index.html">خانقاہ قادریہ گیلانیہ نظامیہ</a>
+                    <p class="h3 text-light">خانقاہ قادریہ گیلانیہ نظامیہ</p>
                   </div>
                   <div class="footer-tittle">
                     <div class="footer-pera">
@@ -376,10 +379,10 @@
                   <div class="footer-tittle">
                     <h4>Quick Links</h4>
                     <ul>
-                      <li><a href="index.html">Home</a></li>
-                      <li><a href="about.html">About</a></li>
-                      <li><a href="services.html">Services</a></li>
-                      <li><a href="contact.html">Contact</a></li>
+                      <li><a href="../index.html">Home</a></li>
+                      <li><a href="../about.html">About</a></li>
+                      <li><a href="index.html">Services</a></li>
+                      <li><a href="../contact.html">Contact</a></li>
                     </ul>
                   </div>
                 </div>
@@ -403,7 +406,7 @@
               <div class="col-sm-3">
                 <div class="single-footer-caption mb-50">
                   <div class="footer-tittle">
-                    <h4><a href="contact.html">Contact</a></h4>
+                    <h4><a href="../contact.html">Contact</a></h4>
                     <ul>
                       <li>Samanabad Lahore, Punjab Pakistan</li>
                       <li>Phone: +92 321 4255894</li>
@@ -422,39 +425,122 @@
 
     <!-- JS here -->
     <!-- All JS Custom Plugins Link Here here -->
-    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script type="text/javascript">
+      let abjad = {
+        ا: 1,
+        آ: 1,
+        أ: 1,
+        إ: 1,
+        ٱ: 1,
+        ء: 1,
+        ب: 2,
+        پ: 2,
+        ج: 3,
+        چ: 3,
+        د: 4,
+        ه: 5,
+        ة: 5,
+        ۀ: 5,
+        ۃ: 5,
+        و: 6,
+        ؤ: 6,
+        ز: 7,
+        ژ: 7,
+        ح: 8,
+        ط: 9,
+        ي: 10,
+        ی: 10,
+        ى: 10,
+        ئ: 10,
+        ك: 20,
+        گ: 20,
+        ک: 20,
+        ل: 30,
+        م: 40,
+        ن: 50,
+        س: 60,
+        ع: 70,
+        ف: 80,
+        ص: 90,
+        ق: 100,
+        ر: 200,
+        ش: 300,
+        ت: 400,
+        ث: 500,
+        خ: 600,
+        ذ: 700,
+        ض: 800,
+        ظ: 900,
+        غ: 1000,
+        ں: 50,
+        ٹ: 400,
+        ڑ: 200,
+        ہ: 5,
+        ے: 10,
+        ھ: 5,
+        ڈ: 4,
+      };
+      let abjarr = [];
+      let abjadValue = 0;
+
+      function abjadCalc(e) {
+        let abjadString = e.target.value;
+        let value = 0;
+        for (let i = 0; i < abjadString.length; i++) {
+          if (
+            abjad[abjadString[i]] == undefined ||
+            abjad[abjadString[i]] == null
+          ) {
+            continue;
+          }
+          value += abjad[abjadString[i]];
+        }
+        abjadValue = value;
+        abjarr = abjadString.split("");
+        document.getElementById("result").innerHTML =
+          abjadValue == 0 ? "" : abjadValue;
+        let abjarrStr = "";
+        for (let element of abjarr) {
+          if (abjad[element]) {
+            abjarrStr += `, ${element} : ${abjad[element]}`;
+          }
+        }
+        document.getElementById("abjarr").innerHTML = abjarrStr;
+      }
+    </script>
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="./assets/js/popper.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="./assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <!-- <script src="./assets/js/owl.carousel.min.js"></script>
-    <script src="./assets/js/slick.min.js"></script> -->
+    <!-- <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script> -->
     <!-- One Page, Animated-HeadLin -->
-    <script src="./assets/js/wow.min.js"></script>
-    <script src="./assets/js/animated.headline.js"></script>
-    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/animated.headline.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.js"></script>
 
     <!-- Nice-select, sticky -->
-    <script src="./assets/js/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/jquery.sticky.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/jquery.sticky.js"></script>
 
     <!-- counter , waypoint -->
     <!-- <script src="https//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
-    <script src="./assets/js/jquery.counterup.min.js"></script> -->
+    <script src="../assets/js/jquery.counterup.min.js"></script> -->
 
     <!-- contact js -->
-    <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
-    <script src="./assets/js/jquery.validate.min.js"></script>
-    <script src="./assets/js/mail-script.js"></script>
-    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="../assets/js/contact.js"></script>
+    <script src="../assets/js/jquery.form.js"></script>
+    <script src="../assets/js/jquery.validate.min.js"></script>
+    <script src="../assets/js/mail-script.js"></script>
+    <script src="../assets/js/jquery.ajaxchimp.min.js"></script>
 
     <!-- Jquery Plugins, main Jquery -->
-    <script src="./assets/js/plugins.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>
