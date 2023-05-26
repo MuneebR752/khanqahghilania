@@ -25,6 +25,13 @@
     <link rel="stylesheet" href="../../assets/css/slick.css" />
     <link rel="stylesheet" href="../../assets/css/nice-select.css" />
     <link rel="stylesheet" href="../../assets/css/style copy.css" />
+    <style>
+      @media only screen and (max-width: 600px) {
+        .base-text {
+          font-size: 16px;
+        }
+      }
+    </style>
   </head>
 
   <body class="body-bg">
@@ -184,9 +191,9 @@
       </div>
       <!-- Body here -->
       <div class="container my-5">
-        <div class="row flex-column">
+        <div class="d-flex flex-wrap flex-column">
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="nameTotalLN">: کل</p>
+            <p class="col-3 h5 text-right base-text" id="nameTotalLN">: کل</p>
             <input
               oninput="(abjadCalcLN(event))"
               name="name"
@@ -194,7 +201,7 @@
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
-            <label for="name" class="col-sm-3 col-4 h5">: نام</label>
+            <label for="name" class="col-sm-3 col-4 h5 base-text">: نام</label>
           </div>
           <div class="row h6 justify-content-center mt-4">
             <button class="btn btn-dark" onclick="sumOfDigits(abjadValue.name)">

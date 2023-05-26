@@ -25,6 +25,13 @@
     <link rel="stylesheet" href="../../assets/css/slick.css" />
     <link rel="stylesheet" href="../../assets/css/nice-select.css" />
     <link rel="stylesheet" href="../../assets/css/style copy.css" />
+    <style>
+      @media only screen and (max-width: 600px) {
+        .base-text {
+          font-size: 16px;
+        }
+      }
+    </style>
   </head>
 
   <body class="body-bg">
@@ -185,11 +192,11 @@
       <!-- Body here -->
       <div class="container my-5">
         <div
-          class="row flex-column align-content-center justify-content-center"
+          class="d-flex flex-wrap flex-column align-content-center justify-content-center"
         >
           <!-- portion to copy -->
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="MnameTotalM">: کل</p>
+            <p class="col-3 h5 text-right base-text" id="MnameTotalM">: کل</p>
             <input
               oninput="(abjadCalcM(event))"
               name="Mname"
@@ -197,11 +204,15 @@
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
-            <label for="MnameM" class="col-sm-3 col-4 h5">: لڑکے کانام</label>
+            <label for="MnameM" class="col-sm-3 col-4 h5 base-text"
+              >لڑکے کانام</label
+            >
           </div>
           <!-- till here  -->
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="MmotherNameTotalM">: کل</p>
+            <p class="col-3 h5 text-right base-text" id="MmotherNameTotalM">
+              : کل
+            </p>
             <input
               oninput="abjadCalcM(event)"
               name="MmotherName"
@@ -209,12 +220,12 @@
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
-            <label for="MmotherNameM" class="col-sm-3 col-4 h5"
-              >: لڑکے کی والدہ کا نام
+            <label for="MmotherNameM" class="base-text col-sm-3 col-4 h5"
+              >لڑکے کی والدہ کا نام
             </label>
           </div>
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="FnameTotalM">: کل</p>
+            <p class="base-text col-3 h5 text-right" id="FnameTotalM">: کل</p>
             <input
               oninput="(abjadCalcM(event))"
               name="Fname"
@@ -222,11 +233,15 @@
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
-            <label for="Fname" class="col-sm-3 col-4 h5">: لڑکی کا نام</label>
+            <label for="Fname" class="base-text col-sm-3 col-4 h5"
+              >لڑکی کا نام</label
+            >
           </div>
           <!-- till here  -->
           <div class="row form-group">
-            <p class="col-3 h5 text-right" id="FmotherNameTotalM">: کل</p>
+            <p class="col-3 h5 text-right base-text" id="FmotherNameTotalM">
+              : کل
+            </p>
             <input
               oninput="abjadCalcM(event)"
               name="FmotherName"
@@ -234,12 +249,14 @@
               type="text"
               class="input col-sm-6 col-5 form-control"
             />
-            <label for="motherNameM" class="col-sm-3 col-4 h5"
-              >: لڑکی کی والدہ کا نام</label
+            <label for="motherNameM" class="col-sm-3 col-4 h5 base-text"
+              >لڑکی کی والدہ کا نام</label
             >
           </div>
           <div class="col-12 mt-4">
-            <p class="h4 col-4 text-right">مجموعی اعداد <u id="totalM"></u></p>
+            <p class="h4 col-4 text-right base-text">
+              مجموعی اعداد <u id="totalM"></u>
+            </p>
           </div>
           <div class="row h6 justify-content-center mt-4">
             <button

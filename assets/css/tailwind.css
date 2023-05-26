@@ -114,6 +114,51 @@
   top: -0.25rem
 }
 
+.tw-col-span-2 {
+  grid-column: span 2 / span 2
+}
+
+.tw-col-span-7 {
+  grid-column: span 7 / span 7
+}
+
+.tw-my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
+.tw-mt-5 {
+  margin-top: 1.25rem
+}
+
+.tw-flex {
+  display: flex
+}
+
+.tw-grid {
+  display: grid
+}
+
+.tw-min-w-full {
+  min-width: 100%
+}
+
+.tw-grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr))
+}
+
+.tw-grid-cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr))
+}
+
+.tw-justify-center {
+  justify-content: center
+}
+
+.tw-gap-6 {
+  gap: 1.5rem
+}
+
 .tw-space-y-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 1
 }
@@ -128,6 +173,33 @@
 
 .tw-divide-x-reverse > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-x-reverse: 1
+}
+
+.tw-px-10 {
+  padding-left: 2.5rem;
+  padding-right: 2.5rem
+}
+
+.tw-pe-8 {
+  -webkit-padding-end: 2rem;
+          padding-inline-end: 2rem
+}
+
+.tw-text-center {
+  text-align: center
+}
+
+.tw-text-right {
+  text-align: right
+}
+
+.tw-text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+.tw-font-medium {
+  font-weight: 500
 }
 
 .tw-ordinal {
@@ -146,6 +218,30 @@
 
 .\[a-zA-Z-\:\#\] {
   a-z-a--z-: #
+}
+
+@media (min-width: 640px) {
+  .sm\:tw-grid-cols-12 {
+    grid-template-columns: repeat(12, minmax(0, 1fr))
+  }
+
+  .sm\:tw-grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr))
+  }
+
+  .sm\:tw-bg-slate-400 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(148 163 184 / var(--tw-bg-opacity))
+  }
+
+  .sm\:tw-text-center {
+    text-align: center
+  }
+
+  .sm\:tw-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem
+  }
 }
 
 @media (prefers-color-scheme: dark) {
