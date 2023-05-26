@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../../assets/css/slick.css" />
     <link rel="stylesheet" href="../../assets/css/nice-select.css" />
     <link rel="stylesheet" href="../../assets/css/style copy.css" />
+    <link rel="stylesheet" href="../../assets/css/tailwind.css" />
   </head>
 
   <body class="body-bg">
@@ -185,9 +186,8 @@
       <!-- Body here -->
       <div class="container my-5">
         <div
-          class="row flex-column align-content-center justify-content-center"
+          class="d-flex flex-wrap flex-column align-content-center justify-content-center"
         >
-          <!-- portion to copy -->
           <div class="row form-group">
             <p class="col-3 h5 text-right" id="nameTotal">: کل</p>
             <input
@@ -199,7 +199,69 @@
             />
             <label for="name" class="col-sm-3 col-4 h5">: نام</label>
           </div>
-          <!-- till here  -->
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="motherNameTotal">: کل</p>
+            <input
+              oninput="abjadCalc(event)"
+              name="motherName"
+              id="motherName"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="motherName" class="col-sm-3 col-4 h5"
+              >: والدہ کا نام</label
+            >
+          </div>
+          <div class="row form-group">
+            <p class="h5 col-3 text-right" id="select">: کل</p>
+            <select
+              class="form-control form-select col-sm-6 col-5"
+              id="day"
+              name="day"
+              onchange="setDay()"
+            >
+              <option value="0">Select One</option>
+              <option value="367">367 :پیر/دو‌شنبه</option>
+              <option value="422">422 :منگل/سه‌شنبه</option>
+              <option value="566">566 :بدھ/چهار‌شنبه</option>
+              <option value="412">412 :جمعرات/پنج‌شنبه</option>
+              <option value="118">118 :جمعہ/جمعه</option>
+              <option value="257">257 :ہفتہ /شنبه</option>
+              <option value="387">387 :اتوار/یک‌شنبه</option>
+            </select>
+            <label for="day" class="h5 col-sm-3 col-4">: دن کے اعداد</label>
+          </div>
+          <div class="col-12 mt-4">
+            <p class="h6 col-4 text-right">مجموعی اعداد <u id="total"></u></p>
+          </div>
+          <div class="row h4 justify-content-center mt-4">
+            <button
+              class="btn btn-dark col-4 col-sm-2 col-lg-2 mx-3"
+              onclick="calculate()"
+            >
+              نتیجہ
+            </button>
+          </div>
+          <div class="row text-center justify-content-center mt-4">
+            <p class="col-4 col-sm-2 mx-3 h5" id="calculate"></p>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="container my-5">
+        <div
+          class="row flex-column align-content-center justify-content-center"
+        >
+          <div class="row form-group">
+            <p class="col-3 h5 text-right" id="nameTotal">: کل</p>
+            <input
+              oninput="(abjadCalc(event))"
+              name="name"
+              id="name"
+              type="text"
+              class="input col-sm-6 col-5 form-control"
+            />
+            <label for="name" class="col-sm-3 col-4 h5">: نام</label>
+          </div>
           <div class="row form-group">
             <p class="col-3 h5 text-right" id="motherNameTotal">: کل</p>
             <input
@@ -247,7 +309,8 @@
             <p class="col-4 col-sm-2 mx-3 h5" id="calculate"></p>
           </div>
         </div>
-      </div>
+      </div> -->
+      
     </main>
     <footer>
       <!--? Footer Start-->
