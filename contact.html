@@ -223,8 +223,9 @@
                         id="name"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your name'"
-                        placeholder="Enter your name"
+                        onblur="this.placeholder = 'Enter your name (required)'"
+                        placeholder="Enter your name (required)"
+                        required
                       />
                       <input class="d-none" type="checkbox" name="botcheck" />
                       <input
@@ -261,9 +262,10 @@
                         id="phone"
                         type="tel"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter Your WhatsApp Phone Number'"
-                        placeholder="Enter Your WhatsApp Phone Number"
+                        onblur="this.placeholder = 'Enter Your WhatsApp Phone Number  with country code (required)'"
+                        placeholder="Enter Your WhatsApp Phone Number with country code (required)"
                         pattern="[+]{1}[0-9]{11,14}"
+                        required
                       />
                     </div>
                   </div>
@@ -289,8 +291,9 @@
                         cols="30"
                         rows="9"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter Message'"
-                        placeholder=" Enter Message"
+                        onblur="this.placeholder = 'Enter Message (required)'"
+                        placeholder=" Enter Message (required)"
+                        required
                       ></textarea>
                     </div>
                   </div>
@@ -482,11 +485,6 @@
           return false;
         }
 
-        if (!regex.test(subject)) {
-          alert("Please enter a valid subject");
-          return false;
-        }
-
         const formData = new FormData(form);
         let object = Object.fromEntries(formData);
         const json = JSON.stringify(object);
@@ -501,7 +499,7 @@
           .then((response) => {
             const data = response.data;
             if (response.status === 200) {
-              alert(data.message);
+              alert(`Dear ${name}! Your response has been saved successfully!`);
               form.reset(); // Reset form on successful submission
             } else {
               console.error(response);

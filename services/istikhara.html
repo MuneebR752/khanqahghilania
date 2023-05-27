@@ -201,11 +201,10 @@
             </div>
             <div class="col-lg-8">
               <form
+                id="Istikhara_Form"
+                method="post"
                 class="form-contact contact_form"
-                id="contactForm"
                 novalidate="novalidate"
-                netlify
-                netlify-honeypot="bot-field"
                 name="Istikhara"
               >
                 <div class="row">
@@ -218,10 +217,20 @@
                         id="name"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your name'"
-                        placeholder="Enter your name"
+                        onblur="this.placeholder = 'Enter your name (required)'"
+                        placeholder="Enter your name (required)"
                       />
-                      <input class="d-none" type="text" name="bot-field" />
+                      <input class="d-none" type="checkbox" name="botcheck" />
+                      <input
+                        type="hidden"
+                        name="access_key"
+                        value="f54b4c19-40d9-41ba-a786-a6ca21795924"
+                      />
+                      <input
+                        type="hidden"
+                        name="subject"
+                        value="Istikhara Form Submission"
+                      />
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -232,8 +241,9 @@
                         id="mothername"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Mother name'"
-                        placeholder="Enter your mother name"
+                        onblur="this.placeholder = 'Enter your Mother name (required)'"
+                        placeholder="Enter your mother name (required)"
+                        required
                       />
                     </div>
                   </div>
@@ -245,8 +255,9 @@
                         id="fathername"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Father name'"
-                        placeholder="Enter your Father name"
+                        onblur="this.placeholder = 'Enter your Father name (required)'"
+                        placeholder="Enter your Father name (required)"
+                        required
                       />
                     </div>
                   </div>
@@ -271,8 +282,9 @@
                         id="age"
                         type="number"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Age'"
-                        placeholder="Enter your Age"
+                        onblur="this.placeholder = 'Enter your Age (required)'"
+                        placeholder="Enter your Age (required)"
+                        required
                       />
                     </div>
                   </div>
@@ -280,12 +292,13 @@
                     <div class="form-group">
                       <input
                         class="form-control valid"
-                        name="number"
-                        id="number"
-                        type="number"
+                        name="phone"
+                        id="phone"
+                        type="tel"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your WhatsApp Number with Country Code'"
-                        placeholder="Enter your WhatsApp Number with Country Code"
+                        onblur="this.placeholder = 'Enter your WhatsApp Number with Country Code (required)'"
+                        placeholder="Enter your WhatsApp Number with Country Code (required)"
+                        required
                       />
                     </div>
                   </div>
@@ -317,8 +330,13 @@
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <select class="form-control" name="gender" id="gender">
-                        <option>Select Gender</option>
+                      <select
+                        required
+                        class="form-control"
+                        name="gender"
+                        id="gender"
+                      >
+                        <option>Select Gender (required)</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
@@ -328,11 +346,11 @@
                     <div class="form-group">
                       <select
                         class="form-control"
-                        id="doneIstikharaBefore"
-                        name="doneIstikharaBefore"
+                        id="Done_Istikhara_Before"
+                        name="Done_Istikhara_Before"
                       >
-                        <option value="Have you done this istikhara before">
-                          Have you done this istikhara before
+                        <option>
+                          Have you done this istikhara before (required)
                         </option>
                         <option value="Yes">Yes</option>
                         <option value="No">No</option>
@@ -343,13 +361,13 @@
                     <div class="form-group">
                       <textarea
                         class="form-control w-100"
-                        name="message"
-                        id="message"
+                        name="problem"
+                        id="problem"
                         cols="30"
                         rows="9"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter Message'"
-                        placeholder=" Enter Message"
+                        onblur="this.placeholder = 'Enter Your Problem (required)'"
+                        placeholder=" Enter Your Problem (required)"
                       ></textarea>
                     </div>
                   </div>
@@ -357,7 +375,6 @@
                 <div class="form-group mt-3">
                   <button
                     type="submit"
-                    onclick="formSubmission()"
                     class="button button-contactForm boxed-btn"
                   >
                     Send
@@ -523,31 +540,89 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      function formSubmission() {
+      function handleSubmit(event) {
         event.preventDefault();
-        let formData = {
-          name: document.getElementById("name").value,
-          motherName: document.getElementById("mothername").value,
-          email: document.getElementById("email").value,
-          phone: document.getElementById("number").value,
-          city: document.getElementById("city").value,
-          coutry: document.getElementById("country").value,
-          gender: document.getElementById("gender").value,
-          doneIstikharaBefore: document.getElementById("doneIstikharaBefore")
-            .value,
-          message: document.getElementById("message").value,
-        };
+        const form = event.target;
+        const name = form.elements.name.value;
+        const phone = form.elements.phone.value;
+        const fathername = form.elements.fathername.value;
+        const mothername = form.elements.mothername.value;
+        const age = form.elements.age.value;
+        const problem = form.elements.problem.value;
+        //Select Gender value from checkbox
+        const gender = form.elements.gender.value;
+        const done_istikhara_before = form.elements.Done_Istikhara_Before.value;
+
+        const regex = /^[a-zA-Z ]{3,30}$/;
+        const regexPhone = /^[+]{1}[0-9]{11,14}$/;
+        const regexAge = /^[0-9]{1,2}$/;
+
+        if (!regex.test(name)) {
+          alert("Name is not valid");
+          return false;
+        }
+        if (!regex.test(fathername)) {
+          alert("Father name is not valid");
+          return false;
+        }
+        if (!regex.test(mothername)) {
+          alert("Mother name is not valid");
+          return false;
+        }
+
+        if (!regexPhone.test(phone)) {
+          alert("Please enter a valid phone number");
+          return false;
+        }
+
+        if (!regexAge.test(age)) {
+          alert("Please enter a valid age");
+          return false;
+        }
+
+        if (gender !== "male" && gender !== "female") {
+          alert("Please Select Gender");
+          return false;
+        }
+
+        if (done_istikhara_before !== "Yes" && done_istikhara_before !== "No") {
+          alert("Please Select Done Istikhara Before");
+          return false;
+        }
+
+        if (!regex.test(problem)) {
+          alert("Please enter your problem problem properly");
+          return false;
+        }
+        const formData = new FormData(form);
+        let object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
         axios
-          .post("https//localhost:5000/istikhara", formData)
+          .post("https://api.web3forms.com/submit", json, {
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+          })
           .then((response) => {
-            console.log(response.data);
-            // do something with the response data
+            const data = response.data;
+            if (response.status === 200) {
+              alert(`Dear ${name}! Your Response has been saved Successfully`);
+              form.reset(); // Reset form on successful submission
+            } else {
+              console.error(response);
+              alert("Something went wrong!");
+            }
           })
           .catch((error) => {
             console.error(error);
-            // handle error
+            alert("Something went wrong!");
           });
       }
+
+      const form = document.getElementById("Istikhara_Form");
+      form.addEventListener("submit", handleSubmit);
       // }
     </script>
     <!-- All JS Custom Plugins Link Here here -->
@@ -576,7 +651,7 @@
 
     <!-- contact js -->
 
-    <script src="../assets/js/contact.js"></script>
+    <!-- <script src="../assets/js/contact.js"></script> -->
     <script src="../assets/js/jquery.form.js"></script>
     <script src="../assets/js/jquery.validate.min.js"></script>
     <script src="../assets/js/mail-script.js"></script>
