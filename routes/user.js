@@ -41,7 +41,7 @@ router.post("/api/login", async (req, res) => {
     );
     return res
       .status(201)
-      .json({ message: "Login Successfully", token: jwtToken });
+      .json({ message: "Login Successfully", token: jwtToken, user: user });
   }
   return res.status(400).json({ message: "Incorrect password" });
 });

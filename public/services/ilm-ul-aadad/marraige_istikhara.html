@@ -12,7 +12,26 @@
       type="image/x-icon"
       href="../../assets/img/logo/Khanqah Qadria DP.png"
     />
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      localStorage.setItem("redirectURL", window.location.href);
+      let token = sessionStorage.getItem("token");
+      if (!token) {
+        window.location.href = "./login.html";
+      } else {
+        axios.post("http://localhost:5000/api/auth", { token }).then(
+          (res) => {
+            if (res.data.authentication === false) {
+              console.log(res.data.authentication);
+              window.location.href = "./login.html";
+            }
+          },
+          (err) => {
+            window.location.href = "./login.html";
+          }
+        );
+      }
+    </script>
     <!-- CSS here -->
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../../assets/css/owl.carousel.min.css" />
