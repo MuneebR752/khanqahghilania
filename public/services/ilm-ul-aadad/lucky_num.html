@@ -14,9 +14,9 @@
     />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-      localStorage.setItem("redirectURL", window.location.href);
       let token = sessionStorage.getItem("token");
       if (!token) {
+        localStorage.setItem("redirectURL", window.location.href);
         window.location.href = "./login.html";
       } else {
         axios.post("http://localhost:5000/api/auth", { token }).then(

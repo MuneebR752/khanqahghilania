@@ -186,6 +186,7 @@
               sessionStorage.setItem("user", JSON.stringify(res.data.user));
               let redirectURL = localStorage.getItem("redirectURL");
               localStorage.removeItem("redirectURL");
+              console.log(localStorage.getItem("redirectURL"));
               window.location.href = redirectURL || "./index.html";
             }
           })
