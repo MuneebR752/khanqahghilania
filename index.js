@@ -5,19 +5,26 @@ const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
 const path = require("path");
+const UserRouter = require("./routes/user");
+const AdminRouter = require("./routes/admin");
+
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 dotenv.config({ path: ".env" });
-const route = require("./routes/user");
 connectDB();
 app.use(express.static(path.join(__dirname, "public")));
 app.get("/", (_, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });
-app.post("/api/signup", route);
-app.post("/api/login", route);
-app.post("/api/auth", route);
-app.post("/api/changePassword", route);
-app.delete("/", route);
+
+app.post("/user/signup", UserRouter);
+app.post("/user/login", UserRouter);
+app.post("/user/auth", UserRouter);
+app.delete("/", UserRouter);
+
+app.post("/admin/signup", AdminRouter);
+app.post("/admin/login", AdminRouter);
+app.post("/admin/auth", AdminRouter);
+
 app.listen(5000, () => console.log("Server started on port 5000"));

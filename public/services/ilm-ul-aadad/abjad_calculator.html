@@ -37,17 +37,17 @@
       let token = sessionStorage.getItem("token");
       if (!token) {
         localStorage.setItem("redirectURL", window.location.href);
-        window.location.href = "./login.html";
+        window.location.href = "../../user/login.html";
       } else {
-        axios.post("http://localhost:5000/api/auth", { token }).then(
+        axios.post("http://localhost:5000/user/auth", { token }).then(
           (res) => {
             if (res.data.authentication === false) {
               console.log(res.data.authentication);
-              window.location.href = "./login.html";
+              window.location.href = "../../user/login.html";
             }
           },
           (err) => {
-            window.location.href = "./login.html";
+            window.location.href = "../../user/login.html";
           }
         );
       }

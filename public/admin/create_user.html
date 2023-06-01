@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zxx">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>خانقاہ قادریہ گیلانیہ نظامیہ</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/img/logo/Khanqah Qadria DP.png"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      let token = sessionStorage.getItem("token");
+      if (!token) {
+        localStorage.setItem("redirectURL", window.location.href);
+        window.location.href = "./login.html";
+      } else {
+        axios.post("http://localhost:5000/admin/auth", { token }).then(
+          (res) => {
+            if (res.data.authentication === false) {
+              console.log(res.data.authentication);
+              window.location.href = "./login.html";
+            }
+          },
+          (err) => {
+            window.location.href = "./login.html";
+          }
+        );
+      }
+    </script>
+    <!-- CSS here -->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../assets/css/slicknav.css" />
+    <link rel="stylesheet" href="../assets/css/animate.min.css" />
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/slick.css" />
+    <link rel="stylesheet" href="../assets/css/nice-select.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <!-- Preloader Start -->
+    <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+          <div class="preloader-circle"></div>
+          <div class="preloader-img pere-text">
+            <img src="../assets/img/logo/Untitled-2.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Preloader Start -->
+    <header>
+      <!-- Header Start -->
+      <div class="header-area">
+        <div class="main-header">
+          <div class="header-top d-none d-lg-block">
+            <div class="container">
+              <div class="col-xl-12">
+                <div
+                  class="row d-flex justify-content-between align-items-center"
+                >
+                  <div class="header-info-left">
+                    <ul>
+                      <li>
+                        <i class="fa fa-phone"></i>
+                        +92 321 4255894
+                      </li>
+                      <li>
+                        <i class="fa fa-envelope" aria-hidden="true"></i
+                        ><span style="text-transform: lowercase">
+                          support@khanqahghilania.org
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="header-info-right">
+                    <ul class="header-social">
+                      <li>
+                        <a href="https://www.facebook.com/khanqahghilania/"
+                          ><i class="fab fa-facebook-f"></i
+                        ></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      </li>
+                      <li>
+                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="header-bottom header-sticky">
+            <div class="container">
+              <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-xl-2 col-lg-2">
+                  <div class="logo h3">
+                    <a href="../index.html">
+                      <img
+                        src="../assets/img/logo/Untitled-2.png"
+                        alt="logo"
+                        srcset=""
+                        width="75"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xl-10 col-lg-10">
+                  <div
+                    class="menu-wrapper d-flex align-items-center justify-content-end"
+                  >
+                    <!-- Main-menu -->
+                    <div class="main-menu d-none d-lg-block">
+                      <nav>
+                        <ul id="navigation">
+                          <li><a href="../index.html">Home</a></li>
+                          <li><a href="../about.html">About</a></li>
+                          <li>
+                            <a href="../services/index.html">Services</a>
+                            <ul class="submenu">
+                              <li>
+                                <a href="../services/istikhara.html"
+                                  >Istikhara</a
+                                >
+                              </li>
+                              <li><a href="../services/kaat.html">Kaat</a></li>
+                              <li>
+                                <a href="../services/taweezat.html">Taweezat</a>
+                              </li>
+                              <li>
+                                <a href="../services/amliyat_courses.html"
+                                  >Amliyat Courses</a
+                                >
+                              </li>
+                              <li>
+                                <a
+                                  class="d-flex align-items-center justify-content-between"
+                                  href="../services/ilm-ul-aadad/index.html"
+                                  >Ilm u Aadad
+                                  <i
+                                    class="fa-solid fa-arrow-right fa-sm"
+                                    style="color: #ffffff"
+                                  ></i
+                                ></a>
+                                <ul class="submenu2">
+                                  <li>
+                                    <a
+                                      href="../services/ilm-ul-aadad/abjad_calculator.html"
+                                      >Abjad Calculator</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      href="../services/ilm-ul-aadad/istikhara.html"
+                                      >Istikhara</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      href="../services/ilm-ul-aadad/lucky_num.html"
+                                      >Lucky Num</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      href="../services/ilm-ul-aadad/marraige_istikhara.html"
+                                      >Marraige Istikhara</a
+                                    >
+                                  </li>
+                                  <li>
+                                    <a
+                                      href="../services/ilm-ul-aadad/burj_&_star.html"
+                                      >Burj & Star</a
+                                    >
+                                  </li>
+                                </ul>
+                              </li>
+                            </ul>
+                          </li>
+                          <li><a href="../contact.html">Contact</a></li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+                <!-- Mobile Menu -->
+                <div class="col-12">
+                  <div class="mobile_menu d-block d-lg-none"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Header End -->
+    </header>
+    <main>
+      .
+      <!--? Hero Start -->
+      <div class="slider-area2">
+        <div class="slider-height2 hero-overly2 d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-12">
+                <div class="hero-cap hero-cap2 text-center">
+                  <h2>Create A new User</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Hero End -->
+      <!-- ================ contact section start ================= -->
+      <section class="contact-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h2 class="contact-title">
+                Enter Username & Password of new User
+              </h2>
+            </div>
+            <div class="col-lg-8 mt-5">
+              <form
+                id="new_user_form"
+                method="post"
+                class="form-contact container contact_form"
+                novalidate="novalidate"
+                name="Contact"
+              >
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="username"
+                        id="username"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter  Username (required)'"
+                        placeholder="Enter Username (required)"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="password"
+                        id="password"
+                        type="password"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter user password (required)'"
+                        placeholder="Enter user password (required)"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <p>
+                      Check all services You want to give access to the user
+                    </p>
+                  </div>
+                  <div class="col-8">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="istikhara"
+                        id="istikhara"
+                        name="istikhara"
+                      />
+                      <label class="form-check-label" for="istikhara">
+                        Istikhara
+                      </label>
+                    </div>
+
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="lucky_num"
+                        name="lucky_num"
+                        value="lucky_num"
+                      />
+                      <label for="lucky_num" class="form-check-label"
+                        >Lucky Number</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="marraige_istikhara"
+                        name="marraige_istikhara"
+                        value="marraige_istikhara"
+                      />
+                      <label for="marraige_istikhara" class="form-check-label"
+                        >Marraige Istikhara</label
+                      >
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        id="burj_&_star"
+                        name="burj_&_star"
+                        value="burj_&_star"
+                      />
+                      <label for="burj_&_star" class="form-check-label"
+                        >Burj & Star</label
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <button
+                    type="submit"
+                    class="button button-contactForm boxed-btn"
+                  >
+                    Send
+                  </button>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-3 offset-lg-1">
+              <div class="media contact-info">
+                <span class="contact-info__icon"><i class="ti-home"></i></span>
+                <div class="media-body">
+                  <h3>Samanabad Lahore</h3>
+                  <p>Punjab, Pakistan</p>
+                </div>
+              </div>
+              <div class="media contact-info">
+                <span class="contact-info__icon"
+                  ><i class="ti-tablet"></i
+                ></span>
+                <div class="media-body">
+                  <h3>+92 321 4255894</h3>
+                  <p>Mon to Fri 9am to 6pm</p>
+                </div>
+              </div>
+              <div class="media contact-info">
+                <span class="contact-info__icon"><i class="ti-email"></i></span>
+                <div class="media-body">
+                  <h3>support@khanqahghilania.org</h3>
+                  <p>Send us your query anytime!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ================ contact section end ================= -->
+    </main>
+    <footer>
+      <!--? Footer Start-->
+      <div
+        class="footer-area section-bg"
+        data-background="assets/img/gallery/footer_bg.jpg"
+      >
+        <div class="container">
+          <div class="footer-top footer-padding">
+            <div class="row d-flex justify-content-between">
+              <div class="col-xl-4 col-lg-5 col-md-5 col-sm-8">
+                <div class="single-footer-caption mb-50">
+                  <!-- logo -->
+                  <div class="footer-logo h3">
+                    <p class="h3 text-light">خانقاہ قادریہ گیلانیہ نظامیہ</p>
+                  </div>
+                  <div class="footer-tittle">
+                    <div class="footer-pera">
+                      <p class="info1">
+                        Receive updates and latest news direct from Simply
+                        enter.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="footer-number">
+                    <h4><span>+92 </span>321 4255894</h4>
+                    <p>support@khanqahghilania.org</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8">
+                <div class="single-footer-caption mb-50">
+                  <div class="footer-tittle">
+                    <h4>Location</h4>
+                    <div class="footer-pera">
+                      <p class="info1">Subscribe now to get daily updates</p>
+                    </div>
+                  </div>
+                  <!-- Form -->
+                  <div class="footer-form">
+                    <div id="mc_embed_signup">
+                      <form
+                        target="_blank"
+                        action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                        method="get"
+                        class="subscribe_form relative mail_part"
+                        novalidate="true"
+                      >
+                        <input
+                          type="email"
+                          name="EMAIL"
+                          id="newsletter-form-email"
+                          placeholder=" Email Address "
+                          class="placeholder hide-on-focus"
+                          onfocus="this.placeholder = ''"
+                          onblur="this.placeholder = 'Your email address'"
+                        />
+                        <div class="form-icon">
+                          <button
+                            type="submit"
+                            name="submit"
+                            id="newsletter-submit"
+                            class="email_icon newsletter-submit button-contactForm"
+                          >
+                            SIGN UP
+                          </button>
+                        </div>
+                        <div class="mt-10 info"></div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div></div>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <div class="single-footer-caption mb-50">
+                  <div class="footer-tittle">
+                    <h4>Quick Links</h4>
+                    <ul>
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="./services/index.html">Services</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3"></div>
+              <div class="col-sm-3">
+                <div class="single-footer-caption mb-50">
+                  <div class="footer-tittle">
+                    <h4>Top Services</h4>
+                    <ul>
+                      <li><a href="./services/kaat.html">Online Kaat</a></li>
+                      <li><a href="./services/istikhara.html">Istikhara</a></li>
+                      <li>
+                        <a href="./services/amliyat_courses.html"
+                          >Amliyat Course</a
+                        >
+                      </li>
+                      <li><a href="./services/taweezat.html">Taweezat</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3">
+                <div class="single-footer-caption mb-50">
+                  <div class="footer-tittle">
+                    <h4><a href="contact.html">Contact</a></h4>
+                    <ul>
+                      <li>Samanabad Lahore, Punjab Pakistan</li>
+                      <li>Phone: +92 321 4255894</li>
+                      <li>Email: support@khanqahghilania.org</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer End-->
+    </footer>
+    <!-- All JS Custom Plugins Link Here here -->
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+        if (username.value === "" || password.value === "") {
+          alert("Please enter username and password");
+          return;
+        }
+        let user = {
+          username: username.value,
+          password: password.value,
+          services: [],
+        };
+
+        let services = document.querySelectorAll("input[type=checkbox]");
+        services.forEach((service) => {
+          if (service.checked) {
+            user.services.push(service.value);
+          }
+        });
+        axios
+          .post("http://localhost:5000/user/signup", {
+            user,
+          })
+          .then((res) => {
+            if (res.status === 201) {
+              console.log(res);
+              alert(res.data.message);
+              form.reset();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            alert(err.response.data.message);
+          });
+      }
+
+      const form = document.getElementById("new_user_form");
+      form.addEventListener("submit", handleSubmit);
+      // }
+    </script>
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/animated.headline.js"></script>
+
+    <!-- Nice-select, sticky -->
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/jquery.sticky.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.js"></script>
+    <!-- counter , waypoint -->
+    <script src="https//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
+
+    <!-- contact js -->
+    <!-- <script src="./assets/js/contact.js"></script> -->
+    <script src="../assets/js/jquery.form.js"></script>
+    <script src="../assets/js/jquery.validate.min.js"></script>
+    <script src="../assets/js/mail-script.js"></script>
+    <script src="../assets/js/jquery.ajaxchimp.min.js"></script>
+
+    <!-- Jquery Plugins, main Jquery -->
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

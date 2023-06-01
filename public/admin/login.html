@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | Khanqah Ghilania</title>
+    <title>Admin | Khanqah Ghilania</title>
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="../../assets/img/logo/Khanqah Qadria DP.png"
+      href="../assets/img/logo/Khanqah Qadria DP.png"
     />
     <!--Font Awesome-->
     <link
@@ -146,7 +146,7 @@
       <h2>Khanqah Ghilania</h2>
       <div class="text">
         <h1>Log in</h1>
-        <p>Required to access any Ilm ul aadad service</p>
+        <p>Required to access user creation page</p>
       </div>
       <div class="your-input">
         <div class="input">
@@ -178,17 +178,15 @@
           return;
         }
         axios
-          .post("http://localhost:5000/api/login", {
+          .post("http://localhost:5000/admin/login", {
             username: username.value,
             password: password.value,
           })
           .then((res) => {
             if (res.data.token) {
               sessionStorage.setItem("token", res.data.token);
-              sessionStorage.setItem("user", JSON.stringify(res.data.user));
               let redirectURL = localStorage.getItem("redirectURL");
               localStorage.removeItem("redirectURL");
-              console.log(localStorage.getItem("redirectURL"));
               window.location.href = redirectURL || "./index.html";
             }
           })
