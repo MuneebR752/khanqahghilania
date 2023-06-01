@@ -5,16 +5,26 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
 router.post("/user/signup", async (req, res) => {
-  const user = {
-    ...req.body,
-    password: bcrypt.hashSync(req.body.password, 10),
-  };
-  console.log(user);
   try {
-    let newUser = await User.create(user);
-    return res.status(201).json({ message: "User created", token: jwtToken });
+    const { username, password, role, services } = req.body;
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await User.create({
+      username,
+      password: hashedPassword,
+      role,
+      services,
+    });
+    return res.status(201).json({ message: "User created", user: newUser });
   } catch (error) {
-    if (error.code === 11000) {
+    if (error.name === "ValidationError") {
+      // Handle schema validation errors
+      const errors = {};
+      for (let field in error.errors) {
+        errors[field] = error.errors[field].message;
+      }
+      return res.status(400).json({ message: "Validation error", errors });
+    } else if (error.code === 11000) {
       return res.status(400).json({ message: "Username already exists" });
     }
     return res.status(500).json({ message: "Server error" });
@@ -28,7 +38,13 @@ router.post("/user/login", async (req, res) => {
   }
   if (await bcrypt.compare(req.body.password, user.password)) {
     let jwtToken = jwt.sign(
-      { id: user._id, username: user.username, password: user.password },
+      {
+        id: user._id,
+        username: user.username,
+        password: user.password,
+        role: user.role,
+        services: user.services,
+      },
       process.env.JWT_SECRET
     );
     return res

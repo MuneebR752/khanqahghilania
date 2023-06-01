@@ -16,17 +16,16 @@
       let token = sessionStorage.getItem("token");
       if (!token) {
         localStorage.setItem("redirectURL", window.location.href);
-        window.location.href = "./login.html";
+        window.location.href = "../user/login.html";
       } else {
-        axios.post("http://localhost:5000/admin/auth", { token }).then(
+        axios.post("http://localhost:5000/user/auth", { token }).then(
           (res) => {
             if (res.data.authentication === false) {
-              console.log(res.data.authentication);
-              window.location.href = "./login.html";
+              window.location.href = "../user/login.html";
             }
           },
           (err) => {
-            window.location.href = "./login.html";
+            window.location.href = "../user/login.html";
           }
         );
       }
@@ -246,12 +245,12 @@
               <form
                 id="new_user_form"
                 method="post"
-                class="form-contact container contact_form"
+                class="form-contact contact_form"
                 novalidate="novalidate"
                 name="Contact"
               >
                 <div class="row">
-                  <div class="col-8">
+                  <div class="col-8 col-sm-12">
                     <div class="form-group">
                       <input
                         class="form-control valid"
@@ -265,7 +264,7 @@
                       />
                     </div>
                   </div>
-                  <div class="col-8">
+                  <div class="col-8 col-sm-12">
                     <div class="form-group">
                       <input
                         class="form-control valid"
@@ -278,60 +277,97 @@
                       />
                     </div>
                   </div>
-                  <div class="col-8">
-                    <p>
-                      Check all services You want to give access to the user
-                    </p>
-                  </div>
-                  <div class="col-8">
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value="istikhara"
-                        id="istikhara"
-                        name="istikhara"
-                      />
-                      <label class="form-check-label" for="istikhara">
-                        Istikhara
-                      </label>
-                    </div>
+                  <div class="col-8 col-sm-12 my-4">
+                    <h5>Select Role Of the User</h5>
 
                     <div class="form-check">
                       <input
+                        type="radio"
                         class="form-check-input"
-                        type="checkbox"
-                        id="lucky_num"
-                        name="lucky_num"
-                        value="lucky_num"
-                      />
-                      <label for="lucky_num" class="form-check-label"
-                        >Lucky Number</label
-                      >
+                        id="user"
+                        name="role"
+                        value="user"
+                        checked
+                      />User
+                      <label class="form-check-label" for="user"></label>
                     </div>
                     <div class="form-check">
                       <input
+                        type="radio"
                         class="form-check-input"
-                        type="checkbox"
-                        id="marraige_istikhara"
-                        name="marraige_istikhara"
-                        value="marraige_istikhara"
-                      />
-                      <label for="marraige_istikhara" class="form-check-label"
-                        >Marraige Istikhara</label
-                      >
+                        id="admin"
+                        name="role"
+                        value="admin"
+                      />Admin
+                      <label class="form-check-label" for="admin"></label>
                     </div>
-                    <div class="form-check">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        id="burj_&_star"
-                        name="burj_&_star"
-                        value="burj_&_star"
-                      />
-                      <label for="burj_&_star" class="form-check-label"
-                        >Burj & Star</label
-                      >
+                  </div>
+
+                  <div class="col-8 col-sm-12 my-4">
+                    <h5>Check Services accessible by user</h5>
+                    <div class="form-inline">
+                      <div class="form-check mr-4">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="istikhara"
+                          id="istikhara"
+                          name="istikhara"
+                        />
+                        <label
+                          style="font-size: 18px"
+                          class="form-check-label"
+                          for="istikhara"
+                        >
+                          Istikhara
+                        </label>
+                      </div>
+
+                      <div class="form-check mr-4">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="lucky_num"
+                          name="lucky_num"
+                          value="lucky_num"
+                        />
+                        <label
+                          style="font-size: 18px"
+                          for="lucky_num"
+                          class="form-check-label"
+                          >Lucky Number</label
+                        >
+                      </div>
+                      <div class="form-check mr-4">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="marraige_istikhara"
+                          name="marraige_istikhara"
+                          value="marraige_istikhara"
+                        />
+                        <label
+                          style="font-size: 18px"
+                          for="marraige_istikhara"
+                          class="form-check-label"
+                          >Marraige Istikhara</label
+                        >
+                      </div>
+                      <div class="form-check mr-4">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          id="burj_&_star"
+                          name="burj_&_star"
+                          value="burj_&_star"
+                        />
+                        <label
+                          style="font-size: 18px"
+                          for="burj_&_star"
+                          class="form-check-label"
+                          >Burj & Star</label
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -505,15 +541,11 @@
         event.preventDefault();
         const username = document.getElementById("username");
         const password = document.getElementById("password");
+
         if (username.value === "" || password.value === "") {
           alert("Please enter username and password");
           return;
         }
-        let user = {
-          username: username.value,
-          password: password.value,
-          services: [],
-        };
 
         let services = document.querySelectorAll("input[type=checkbox]");
         services.forEach((service) => {

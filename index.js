@@ -6,7 +6,6 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 const UserRouter = require("./routes/user");
-const AdminRouter = require("./routes/admin");
 
 app.use(morgan("dev"));
 app.use(cors());
@@ -23,8 +22,5 @@ app.post("/user/login", UserRouter);
 app.post("/user/auth", UserRouter);
 app.delete("/", UserRouter);
 
-app.post("/admin/signup", AdminRouter);
-app.post("/admin/login", AdminRouter);
-app.post("/admin/auth", AdminRouter);
 
 app.listen(5000, () => console.log("Server started on port 5000"));
