@@ -542,8 +542,8 @@
           return false;
         }
 
-        if (!regex.test(problem)) {
-          alert("Please enter your problem problem properly");
+        if (problem.length < 10) {
+          alert("Please explain your problem in detail");
           return false;
         }
 

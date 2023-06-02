@@ -20,7 +20,7 @@
         sessionStorage.setItem("redirectURL", window.location.href);
         window.location.href = "../../user/login.html";
       } else {
-        axios.post("http://localhost:5000/user/auth", { token }).then(
+        axios.post("http://khanqahghilania.org/user/auth", { token }).then(
           (res) => {
             if (res.data.authentication === false) {
               console.log(res.data.authentication);

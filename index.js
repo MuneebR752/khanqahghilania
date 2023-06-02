@@ -9,6 +9,13 @@ const UserRouter = require("./routes/user");
 
 app.use(morgan("dev"));
 app.use(cors());
+let allowCrossDomain = function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
+  res.header("Access-Control-Allow-Headers", "Content-Type");
+  next();
+};
+app.use(allowCrossDomain);
 app.use(express.json());
 dotenv.config({ path: ".env" });
 connectDB();
@@ -21,6 +28,5 @@ app.post("/user/signup", UserRouter);
 app.post("/user/login", UserRouter);
 app.post("/user/auth", UserRouter);
 app.delete("/", UserRouter);
-
 
 app.listen(5000, () => console.log("Server started on port 5000"));
