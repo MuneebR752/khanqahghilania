@@ -14,8 +14,10 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       let token = sessionStorage.getItem("token");
+      let user = JSON.parse(sessionStorage.getItem("user"));
       if (!token) {
-        localStorage.setItem("redirectURL", window.location.href);
+        alert("Login Required");
+        sessionStorage.setItem("redirectURL", window.location.href);
         window.location.href = "../user/login.html";
       } else {
         axios.post("http://localhost:5000/user/auth", { token }).then(
@@ -28,6 +30,10 @@
             window.location.href = "../user/login.html";
           }
         );
+        if (user.role !== "admin") {
+          alert("You are not authorized to access this page");
+          window.location.href = "../index.html";
+        }
       }
     </script>
     <!-- CSS here -->
@@ -306,7 +312,23 @@
                   <div class="col-8 col-sm-12 my-4">
                     <h5>Check Services accessible by user</h5>
                     <div class="form-inline">
-                      <div class="form-check mr-4">
+                      <div class="form-check mr-3">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          value="abjad_calculator"
+                          id="abjad_calculator"
+                          name="abjad_calculator"
+                        />
+                        <label
+                          style="font-size: 18px"
+                          class="form-check-label"
+                          for="abjad_calculator"
+                        >
+                          Abjad Calculator
+                        </label>
+                      </div>
+                      <div class="form-check mr-3">
                         <input
                           class="form-check-input"
                           type="checkbox"
@@ -323,7 +345,7 @@
                         </label>
                       </div>
 
-                      <div class="form-check mr-4">
+                      <div class="form-check mr-3">
                         <input
                           class="form-check-input"
                           type="checkbox"
@@ -338,7 +360,7 @@
                           >Lucky Number</label
                         >
                       </div>
-                      <div class="form-check mr-4">
+                      <div class="form-check mr-3">
                         <input
                           class="form-check-input"
                           type="checkbox"
@@ -353,7 +375,7 @@
                           >Marraige Istikhara</label
                         >
                       </div>
-                      <div class="form-check mr-4">
+                      <div class="form-check mr-3">
                         <input
                           class="form-check-input"
                           type="checkbox"
@@ -373,7 +395,6 @@
                 </div>
                 <div class="form-group mt-3">
                   <button
-                    onclick="handleSubmit(event)"
                     type="submit"
                     class="button button-contactForm boxed-btn"
                   >
@@ -577,10 +598,8 @@
             alert(err.response.data.message);
           });
       }
-
-      // const form = document.getElementById("new_user_form");
-      // form.addEventListener("submit", handleSubmit);
-      // }
+      const form = document.getElementById("new_user_form");
+      form.addEventListener("submit", handleSubmit);
     </script>
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->

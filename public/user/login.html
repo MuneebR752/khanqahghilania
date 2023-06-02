@@ -173,7 +173,7 @@
       const password = document.getElementById("password");
       const btn = document.querySelector("button");
       btn.addEventListener("click", () => {
-        if (username.value === "" || password.value === "") {
+        if (username.value === "" && password.value === "") {
           alert("Please enter username and password");
           return;
         }
@@ -186,10 +186,8 @@
             if (res.data.token) {
               sessionStorage.setItem("token", res.data.token);
               sessionStorage.setItem("user", JSON.stringify(res.data.user));
-              let redirectURL = localStorage.getItem("redirectURL");
-              localStorage.removeItem("redirectURL");
-              console.log(localStorage.getItem("redirectURL"));
-              window.location.href = redirectURL || "./index.html";
+              let redirectURL = sessionStorage.getItem("redirectURL");
+              window.location.href = redirectURL || "../index.html";
             }
           })
           .catch((err) => {
