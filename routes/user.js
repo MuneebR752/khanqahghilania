@@ -6,9 +6,8 @@ const jwt = require("jsonwebtoken");
 
 router.post("/user/signup", async (req, res) => {
   try {
-    const { username, password, role, services } = req.body;
+    const { username, password, role, services } = req.body.user;
     const hashedPassword = await bcrypt.hash(password, 10);
-
     const newUser = await User.create({
       username,
       password: hashedPassword,
@@ -18,7 +17,6 @@ router.post("/user/signup", async (req, res) => {
     return res.status(201).json({ message: "User created", user: newUser });
   } catch (error) {
     if (error.name === "ValidationError") {
-      // Handle schema validation errors
       const errors = {};
       for (let field in error.errors) {
         errors[field] = error.errors[field].message;
