@@ -43,7 +43,7 @@ router.post("/user/login", async (req, res) => {
         role: user.role,
         services: user.services,
       },
-      process.env.JWT_SECRET
+      "Jwt_Authentication_is_Awesome"
     );
     return res
       .status(201)
@@ -59,13 +59,17 @@ router.post("/user/login", async (req, res) => {
 // });
 
 router.post("/user/auth", (req, res) => {
-  jwt.verify(req.body.token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(400).json({ authentication: false });
-    } else {
-      return res.status(200).json({ authentication: true });
+  jwt.verify(
+    req.body.token,
+    "Jwt_Authentication_is_Awesome",
+    (err, decoded) => {
+      if (err) {
+        return res.status(400).json({ authentication: false });
+      } else {
+        return res.status(200).json({ authentication: true });
+      }
     }
-  });
+  );
 });
 
 module.exports = router;
