@@ -395,6 +395,7 @@
                 </div>
                 <div class="form-group mt-3">
                   <button
+                    id="submit"
                     type="submit"
                     class="button button-contactForm boxed-btn"
                   >
@@ -581,8 +582,12 @@
           }
         });
 
+        let btn = document.getElementById("submit");
+        btn.disabled = true;
+        btn.innerHTML = "Creating User...";
+
         let newUser = JSON.stringify(user);
-        console.log(newUser);
+
         axios
           .post("http://khanqahghilania.org/user/signup", {
             user,
@@ -596,6 +601,10 @@
           .catch((err) => {
             console.log(err.response.data);
             alert(err.response.data.message);
+          })
+          .finally(() => {
+            btn.disabled = false;
+            btn.innerHTML = "Send";
           });
       }
       const form = document.getElementById("new_user_form");
