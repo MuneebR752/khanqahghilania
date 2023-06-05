@@ -149,6 +149,15 @@
         padding: 0.2rem;
       }
     </style>
+    <style>
+      @media screen and (min-width: 992px) {
+        .flexCenter {
+          display: flex !important;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+    </style>
   </head>
 
   <body>
@@ -172,9 +181,7 @@
       <button>Sign in</button>
       <p class="join-link">
         Don't have an account?
-        <a href="./account_request.html" class="join-now">
-          Click here to request</a
-        >
+        <a href="./account_request" class="join-now"> Click here to request</a>
       </p>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -199,7 +206,7 @@
     `;
 
         axios
-          .post("http://khanqahghilania.org/user/login", {
+          .post("https://khanqahghilania.org/user/login", {
             username: username.value,
             password: password.value,
           })
@@ -208,7 +215,7 @@
               sessionStorage.setItem("token", res.data.token);
               sessionStorage.setItem("user", JSON.stringify(res.data.user));
               let redirectURL = sessionStorage.getItem("redirectURL");
-              window.location.href = redirectURL || "../index.html";
+              window.location.href = redirectURL || "../";
             }
           })
           .catch((err) => {

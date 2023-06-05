@@ -19,9 +19,11 @@ app.use((req, res, next) => {
 app.use(express.json());
 dotenv.config({ path: ".env" });
 connectDB();
-app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  express.static(path.join(__dirname, "public"), { extensions: ["html"] })
+);
 app.get("/", (_, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index"));
 });
 
 app.post("/user/signup", UserRouter);
