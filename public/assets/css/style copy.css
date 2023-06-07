@@ -3309,7 +3309,7 @@ hero-btn {
   position: absolute;
   width: 170px;
   background: #0d2d3e;
-  left: 100%;
+  left: 0;
   top: 90%;
   visibility: hidden;
   opacity: 0;
@@ -3355,7 +3355,7 @@ hero-btn {
   width: 170px;
   background: #0d2d3e;
   top: 90%;
-  right: 100%;
+  left: 100%;
   visibility: hidden;
   opacity: 0;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
