@@ -331,7 +331,7 @@
                         id="city"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your City'"
+                        onblur="this.placeholder = 'Enter your City (required)'"
                         placeholder="Enter your City"
                       />
                     </div>
@@ -344,7 +344,7 @@
                         id="country"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Country'"
+                        onblur="this.placeholder = 'Enter your Country (required)'"
                         placeholder="Enter your Country"
                       />
                     </div>
@@ -613,6 +613,8 @@
         //Select Gender value from checkbox
         const gender = form.elements.gender.value;
         const done_istikhara_before = form.elements.Done_Istikhara_Before.value;
+        const city = form.elements.city.value;
+        const country = form.elements.country.value;
 
         const regex = /^[a-zA-Z ]{3,30}$/;
         const regexPhone = /^[+]{1}[0-9]{11,14}$/;
@@ -643,6 +645,16 @@
 
         if (gender !== "male" && gender !== "female") {
           alert("Please Select Gender");
+          return false;
+        }
+
+        if (!regex.test(city)) {
+          alert("Please enter a valid city name");
+          return false;
+        }
+
+        if (!regex.test(country)) {
+          alert("Please enter a valid country name");
           return false;
         }
 

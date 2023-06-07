@@ -277,7 +277,7 @@
                     </div>
                   </div>
 
-                  <div class="col-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <input
                         class="form-control"
@@ -292,17 +292,44 @@
                       />
                     </div>
                   </div>
-                  <div class="col-12">
+                  <div class="col-sm-6">
                     <div class="form-group">
                       <input
                         class="form-control valid"
-                        name="Subject"
-                        id="subject"
+                        name="city"
+                        id="city"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter Subject'"
-                        placeholder="Enter Subject"
+                        onblur="this.placeholder = 'Enter your City(required)'"
+                        placeholder="Enter your City (required)"
                       />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="country"
+                        id="country"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter your Country (required)'"
+                        placeholder="Enter your Country (required)"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select
+                        required
+                        class="form-control"
+                        name="gender"
+                        id="gender"
+                      >
+                        <option>Select Gender (required)</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-12">
@@ -529,10 +556,11 @@
         event.preventDefault();
         const form = event.target;
         const name = form.elements.name.value;
-        const email = form.elements.email.value;
         const phone = form.elements.phone.value;
+        const city = form.elements.city.value;
+        const country = form.elements.country.value;
+        const gender = form.elements.gender.value;
         const message = form.elements.message.value;
-        const subject = form.elements.Subject.value;
         const regex = /^[a-zA-Z ]{3,30}$/;
         const regexPhone = /^[+]{1}[0-9]{11,14}$/;
 
@@ -545,7 +573,22 @@
           alert("Please enter a valid phone number");
           return false;
         }
-
+        if (!regex.test(city)) {
+          alert("Please enter a valid city name");
+          return false;
+        }
+        if (!regex.test(country)) {
+          alert("Please enter a valid country name");
+          return false;
+        }
+        if (gender !== "male" && gender !== "female") {
+          alert("Please Select Gender");
+          return false;
+        }
+        if (message.length < 10) {
+          alert("Please enter your message properly");
+          return false;
+        }
         let btn = document.getElementById("submit");
         btn.disabled = true;
         btn.innerHTML = "Sending...";
@@ -602,7 +645,7 @@
     <script src="./assets/js/animated.headline.js"></script>
 
     <!-- Nice-select, sticky -->
-    <script src="./assets/js/jquery.nice-select.min.js"></script>
+    <!-- <script src="./assets/js/jquery.nice-select.min.js"></script> -->
     <script src="./assets/js/jquery.sticky.js"></script>
     <script src="./assets/js/jquery.magnific-popup.js"></script>
     <!-- counter , waypoint -->

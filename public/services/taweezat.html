@@ -303,8 +303,8 @@
                         id="city"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your City'"
-                        placeholder="Enter your City"
+                        onblur="this.placeholder = 'Enter your City (required)'"
+                        placeholder="Enter your City (required)"
                       />
                     </div>
                   </div>
@@ -316,8 +316,8 @@
                         id="country"
                         type="text"
                         onfocus="this.placeholder = ''"
-                        onblur="this.placeholder = 'Enter your Country'"
-                        placeholder="Enter your Country"
+                        onblur="this.placeholder = 'Enter your Country (required)'"
+                        placeholder="Enter your Country (required)"
                       />
                     </div>
                   </div>
@@ -561,7 +561,8 @@
         const name = form.elements.name.value;
         const phone = form.elements.phone.value;
         const mothername = form.elements.mothername.value;
-
+        const city = form.elements.city.value;
+        const country = form.elements.country.value;
         //Select Gender value from checkbox
         const gender = form.elements.gender.value;
         const problem = form.elements.problem.value;
@@ -581,6 +582,16 @@
 
         if (!regexPhone.test(phone)) {
           alert("Please enter a valid phone number");
+          return false;
+        }
+
+        if (!regex.test(city)) {
+          alert("Please enter a valid city name");
+          return false;
+        }
+
+        if (!regex.test(country)) {
+          alert("Please enter a valid country name");
           return false;
         }
 
