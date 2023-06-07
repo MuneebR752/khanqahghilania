@@ -408,7 +408,7 @@
                     type="submit"
                     class="button button-contactForm boxed-btn"
                   >
-                    Send
+                    Create User
                   </button>
                 </div>
               </form>
@@ -627,8 +627,10 @@
             user.services.push(service.value);
           }
         });
+        let btn = document.getElementById("submit");
+        btn.innerHTML = "Creating User...";
+        btn.disabled = true;
 
-        let newUser = JSON.stringify(user);
         console.log(newUser);
         axios
           .post("https://khanqahghilania.org/user/signup", {
@@ -643,6 +645,10 @@
           .catch((err) => {
             console.log(err.response.data);
             alert(err.response.data.message);
+          })
+          .finally(() => {
+            btn.innerHTML = "Create User";
+            btn.disabled = false;
           });
       }
       const form = document.getElementById("new_user_form");
