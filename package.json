@@ -4,7 +4,7 @@
   "description": "The Server runs the site khanqah ghilania",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "dev": "nodemon index.js"
   },
   "author": "Muneeb",
   "license": "ISC",

@@ -38,6 +38,9 @@
           align-items: center;
           justify-content: space-between;
         }
+        #userLog {
+          padding-left: 3rem !important;
+        }
       }
     </style>
   </head>
@@ -177,6 +180,7 @@
                             </ul>
                           </li>
                           <li><a href="../contact">Contact</a></li>
+                          <li id="userLog"></li>
                         </ul>
                       </nav>
                     </div>
@@ -506,6 +510,48 @@
       </div>
       <!-- Footer End-->
     </footer>
+    <!-- Scroll Up -->
+
+    <!-- JS here -->
+    <script>
+      let isLoggedIn = sessionStorage.getItem("isLoggedIn");
+      let userLog = document.getElementById("userLog");
+      function login() {
+        sessionStorage.setItem("redirectURL", window.location.href);
+        window.location.href = "../user/login";
+      }
+      function logout() {
+        sessionStorage.removeItem("isLoggedIn");
+        sessionStorage.removeItem("user");
+        sessionStorage.removeItem("token");
+        window.location.reload();
+      }
+      if (!isLoggedIn) {
+        userLog.innerHTML = `
+        <button style=" all: unset; cursor: pointer; color: inherit;"
+            onclick="login()"
+            class="px-5">
+            Login
+            <i class="fa fa-sign-in fa-sm ml-1"  aria-hidden="true"></i>
+        </button>
+        `;
+      } else {
+        userLog.innerHTML = `
+        <a style="cursor:pointer;"> 
+          <i class="fa fa-user fa-md ml-1" aria-hidden="true" ></i>
+             ${JSON.parse(sessionStorage.getItem("user")).username}
+         </a>
+          <ul class="submenu">
+          <li>
+            <a onclick="logout()">
+                Logout
+               <i class="fa fa-sign-out fa-md ml-1" aria-hidden="true"></i>
+            </a>
+          </li>
+          </ul>
+        `;
+      }
+    </script>
     <!-- JS here -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
