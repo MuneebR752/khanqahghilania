@@ -253,10 +253,10 @@
           <div class="row">
             <div class="col-12">
               <h2 class="contact-title">
-                Enter Username & Password of new User
+                Enter Personal Information of New User
               </h2>
             </div>
-            <div class="col-lg-8 mt-5">
+            <div class="col-lg-8">
               <form
                 id="new_user_form"
                 method="post"
@@ -265,7 +265,95 @@
                 name="Contact"
               >
                 <div class="row">
-                  <div class="col-8 col-sm-12">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="name"
+                        id="name"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter name of User(required)'"
+                        placeholder="Enter name of User(required)"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="email"
+                        id="email"
+                        type="email"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter User\'s email address  (required)'"
+                        placeholder="Enter User's email address (required)"
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control"
+                        name="phone"
+                        id="phone"
+                        type="tel"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter User\'s WhatsApp Phone Number  with country code (required)'"
+                        placeholder="Enter User's WhatsApp Phone Number with country code (required)"
+                        pattern="[+]{1}[0-9]{11,14}"
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="city"
+                        id="city"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter User\'s City(required)'"
+                        placeholder="Enter User's City (required)"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <input
+                        class="form-control valid"
+                        name="country"
+                        id="country"
+                        type="text"
+                        onfocus="this.placeholder = ''"
+                        onblur="this.placeholder = 'Enter User\'s Country (required)'"
+                        placeholder="Enter User's Country (required)"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <select
+                        required
+                        class="form-control"
+                        name="gender"
+                        id="gender"
+                      >
+                        <option>Select Gender (required)</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <h2 class="contact-title">
+                      Enter Login Information of New User
+                    </h2>
+                  </div>
+                  <div class="col-12">
                     <div class="form-group">
                       <input
                         class="form-control valid"
@@ -279,21 +367,21 @@
                       />
                     </div>
                   </div>
-                  <div class="col-8 col-sm-12">
+                  <div class="col-12">
                     <div class="form-group">
                       <input
                         class="form-control valid"
                         name="password"
                         id="password"
-                        type="password"
+                        type="text"
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'Enter user password (required)'"
                         placeholder="Enter user password (required)"
                       />
                     </div>
                   </div>
-                  <div class="col-8 col-sm-12 my-4">
-                    <h5>Select Role Of the User</h5>
+                  <div class="col-12 mb-4">
+                    <h3 class="contact-title">Select Role Of the User</h3>
 
                     <div class="form-check">
                       <input
@@ -318,9 +406,11 @@
                     </div>
                   </div>
 
-                  <div class="col-8 col-sm-12 my-4">
-                    <h5>Check Services accessible by user</h5>
-                    <div class="form-inline">
+                  <div class="col-12">
+                    <h3 class="contact-title">
+                      Check Services accessible by User
+                    </h3>
+                    <div>
                       <div class="form-check mr-3">
                         <input
                           class="form-check-input"
@@ -401,8 +491,22 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-4 mt-4">
+                    <div class="form-group">
+                      <label class="contact-title" for="expiry_date"
+                        >Expiry Date of the User</label
+                      >
+                      <input
+                        class="form-control valid"
+                        name="expiry_date"
+                        id="expiry_date"
+                        type="date"
+                      />
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group mt-3">
+
+                <div class="form-group mt-4">
                   <button
                     id="submit"
                     type="submit"
@@ -608,18 +712,56 @@
     <script>
       function handleSubmit(event) {
         event.preventDefault();
-        const username = document.getElementById("username");
-        const password = document.getElementById("password");
+        const form = event.target;
+        const name = form.elements.name.value;
+        const email = form.elements.email.value;
+        const phone = form.elements.phone.value;
+        const city = form.elements.city.value;
+        const country = form.elements.country.value;
+        const gender = form.elements.gender.value;
+        const username = form.elements.username.value;
+        const password = form.elements.password.value;
+        const expiry_date = form.elements.expiry_date.value;
         const role = document.querySelector("input[name=role]:checked").value;
-        if (username.value === "" || password.value === "") {
-          alert("Please enter username and password");
-          return;
+        const regex = /^[a-zA-Z ]{3,30}$/;
+        const regexPhone = /^[+]{1}[0-9]{11,14}$/;
+
+        if (!regex.test(name)) {
+          alert("Please enter a valid name");
+          return false;
+        }
+        if (!regexPhone.test(phone)) {
+          alert("Please enter a valid phone number");
+          return false;
+        }
+        if (!regex.test(city)) {
+          alert("Please enter a valid city name");
+          return false;
+        }
+        if (!regex.test(country)) {
+          alert("Please enter a valid country name");
+          return false;
+        }
+        if (gender !== "male" && gender !== "female") {
+          alert("Please Select Gender");
+          return false;
+        }
+        if (username === "" || password === "") {
+          alert("Please enter a valid username and password");
+          return false;
         }
         let user = {
-          username: username.value,
-          password: password.value,
+          name,
+          email,
+          phone,
+          city,
+          country,
+          gender,
+          username,
+          password,
           role,
           services: [],
+          expiry_date,
         };
         let services = document.querySelectorAll("input[type=checkbox]");
         services.forEach((service) => {
@@ -627,10 +769,10 @@
             user.services.push(service.value);
           }
         });
+        console.log(user);
         let btn = document.getElementById("submit");
         btn.innerHTML = "Creating User...";
         btn.disabled = true;
-
         axios
           .post("https://khanqahghilania.org/user/signup", {
             user,
@@ -669,7 +811,7 @@
     <script src="../assets/js/animated.headline.js"></script>
 
     <!-- Nice-select, sticky -->
-    <script src="../assets/js/jquery.nice-select.min.js"></script>
+    <!-- <script src="../assets/js/jquery.nice-select.min.js"></script> -->
     <script src="../assets/js/jquery.sticky.js"></script>
     <script src="../assets/js/jquery.magnific-popup.js"></script>
     <!-- counter , waypoint -->

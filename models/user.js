@@ -2,6 +2,31 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
+    name: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: true,
+    },
+    city: {
+      type: String,
+      required: true,
+    },
+    country: {
+      type: String,
+      required: true,
+    },
+    gender: {
+      type: String,
+      enum: ["male", "female"],
+      required: true,
+    },
     username: {
       type: String,
       required: true,
@@ -18,6 +43,10 @@ const userSchema = new mongoose.Schema(
     },
     services: {
       type: Array,
+      required: true,
+    },
+    expiry_date: {
+      type: Date,
       required: true,
     },
   },

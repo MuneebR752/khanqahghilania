@@ -6,14 +6,33 @@ const jwt = require("jsonwebtoken");
 
 router.post("/user/signup", async (req, res) => {
   try {
-    const { username, password, role, services } = req.body.user;
-    console.log(req.body);
+    const {
+      name,
+      email,
+      phone,
+      city,
+      country,
+      gender,
+      username,
+      password,
+      role,
+      services,
+      expiry_date,
+    } = req.body.user;
+    console.log(req.body.user);
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = await User.create({
+      name,
+      email,
+      phone,
+      city,
+      country,
+      gender,
       username,
       password: hashedPassword,
       role,
       services,
+      expiry_date,
     });
     return res.status(201).json({ message: "User created", user: newUser });
   } catch (error) {
@@ -34,6 +53,11 @@ router.post("/user/login", async (req, res) => {
   const user = await User.findOne({ username: req.body.username });
   if (!user) {
     return res.status(400).json({ message: "User not found" });
+  }
+  if (user.expiry_date < Date.now()) {
+    return res.status(400).json({
+      message: "Your subscription has been expired please contact admin",
+    });
   }
   if (await bcrypt.compare(req.body.password, user.password)) {
     let jwtToken = jwt.sign(
