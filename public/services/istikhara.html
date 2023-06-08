@@ -582,11 +582,11 @@
         userLog.innerHTML = `
         <a style="cursor:pointer;"> 
           <i class="fa fa-user fa-md ml-1" aria-hidden="true" ></i>
-             ${JSON.parse(sessionStorage.getItem("user")).username}
+             ${JSON.parse(sessionStorage.getItem("user")).name}
          </a>
           <ul class="submenu">
           <li>
-            <a onclick="logout()">
+            <a style="cursor:pointer;" onclick="logout()">
                 Logout
                <i class="fa fa-sign-out fa-md ml-1" aria-hidden="true"></i>
             </a>
