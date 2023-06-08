@@ -16,7 +16,6 @@
       let token = sessionStorage.getItem("token");
       let user = JSON.parse(sessionStorage.getItem("user"));
       if (!token) {
-        alert("Login Required");
         sessionStorage.setItem("redirectURL", window.location.href);
         window.location.href = "../user/login";
       } else {
