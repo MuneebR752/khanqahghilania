@@ -372,14 +372,16 @@
                         class="form-control valid"
                         name="password"
                         id="password"
-                        type="text"
+                        type="password"
                         onfocus="this.placeholder = ''"
                         onblur="this.placeholder = 'Enter user password (required)'"
                         placeholder="Enter user password (required)"
                       />
                     </div>
+                    <input type="checkbox" onclick="showPassword()" /> Show
+                    Password
                   </div>
-                  <div class="col-12 mb-4">
+                  <div class="col-12 my-4">
                     <h3 class="contact-title">Select Role Of the User</h3>
 
                     <div class="form-check">
@@ -671,6 +673,14 @@
     <script>
       let isLoggedIn = sessionStorage.getItem("isLoggedIn");
       let userLog = document.getElementById("userLog");
+      function showPassword() {
+        let password = document.getElementById("password");
+        if (password.type === "password") {
+          password.type = "text";
+        } else {
+          password.type = "password";
+        }
+      }
       function login() {
         sessionStorage.setItem("redirectURL", window.location.href);
         window.location.href = "./user/login";
