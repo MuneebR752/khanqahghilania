@@ -40,19 +40,17 @@
         sessionStorage.setItem("redirectURL", window.location.href);
         window.location.href = "../../user/login";
       } else {
-        axios
-          .post("https://khanqahghilania.vercel.app/user/auth", { token })
-          .then(
-            (res) => {
-              if (res.data.authentication === false) {
-                console.log(res.data.authentication);
-                window.location.href = "../../user/login";
-              }
-            },
-            (err) => {
+        axios.post("https://khanqahghilania.org/user/auth", { token }).then(
+          (res) => {
+            if (res.data.authentication === false) {
+              console.log(res.data.authentication);
               window.location.href = "../../user/login";
             }
-          );
+          },
+          (err) => {
+            window.location.href = "../../user/login";
+          }
+        );
       }
       if (
         user.role !== "admin" &&
