@@ -40,7 +40,7 @@
         sessionStorage.setItem("redirectURL", window.location.href);
         window.location.href = "../../user/login";
       } else {
-        axios.post("https://khanqahghilania.org/user/auth", { token }).then(
+        axios.post(`${window.location.origin}/user/auth`, { token }).then(
           (res) => {
             if (res.data.authentication === false) {
               console.log(res.data.authentication);

@@ -206,7 +206,7 @@
     `;
 
         axios
-          .post("https://khanqahghilania.org/user/login", {
+          .post(`${window.location.origin}/user/login`, {
             username: username.value,
             password: password.value,
           })
