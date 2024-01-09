@@ -6,7 +6,7 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 const UserRouter = require("./routes/user");
-
+connectDB();
 app.use(morgan("dev"));
 app.use(cors());
 
@@ -18,7 +18,6 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 dotenv.config({ path: ".env" });
-connectDB();
 app.use(
   express.static(path.join(__dirname, "public"), { extensions: ["html"] })
 );
